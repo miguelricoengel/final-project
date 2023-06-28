@@ -13,10 +13,11 @@ function Welcome() {
         commodo consequat.
       </p>
      
-      <div className="flex justify-center p-7 h-screen">
+      <div className="flex justify-center p-7">
       <Login />
-      <br />
-      <Link to="/Signup"><p> dont have an account yet? sing up here!</p></Link>
+      </div>
+      <div className="flex justify-center">
+      <p> dont have an account yet? <Link to="/Signup">sing up here!</Link></p>
     </div>
     </div>
   );

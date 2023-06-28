@@ -19,16 +19,16 @@ function Login() {
   return (
     <div className="relative">
       <button
-        className="p-10 bg-[#38bcf9] text-white rounded-full"
+        className=" ball p-10 bg-[#38bcf9] text-white rounded-full skew-y-12"
  
         onClick={toggleButton}
       >
         Login
       </button>
       {isOpen && (
-        <div className="absolute mt-4 bg-white p-5 rounded-full w-56 shadow-lg">
+        <div className="ball absolute mt-4 bg-white p-5 rounded-full w-56 shadow-lg">
           <div className="flex bg-gray-bg1">
-            <div className="p-10 bg-white rounded-full shadow-default py-2 px-6">
+            <div className="p-10 rounded-full shadow-default py-2 px-6">
               <h1 className="text-base font-small text-primary mt-1 mb-1 text-center">
                 Log in 🔐 🫧
               </h1>
