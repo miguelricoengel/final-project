@@ -19,7 +19,7 @@ function Login() {
   return (
     <div className="relative">
       <button
-        className=" ball p-10 bg-[#38bcf9] text-white rounded-full skew-y-12"
+        className=" ball p-10 bg-[#38bcf9] text-white rounded-full"
  
         onClick={toggleButton}
       >
