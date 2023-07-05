@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import Buble from './Buble';
+import { useState } from "react";
+import Buble from "./Buble";
 
 function Login() {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,16 +20,16 @@ function Login() {
   return (
     <div className="relative">
       <button
-        className="ball p-10 bg-[#38bcf9] text-white rounded-full"
-        onClick={toggleButton}
-      >
-        Login
+        className="rounded border-none bg-transparent text-white hover:bg-transparent focus:outline-none"
+        onClick={toggleButton}>
+        <Buble text="Login" size="medium" />
       </button>
+
       {isOpen && (
         <Buble
           text={
             <>
-              <h1 className="text-base font-small text-primary mt-1 mb-1 text-center">
+              <h1 className="font-small text-primary mb-1 mt-1 text-center text-base">
                 Log in 🔐 🫧
               </h1>
 
@@ -38,7 +38,7 @@ function Login() {
                   <label htmlFor="email">Email</label>
                   <input
                     type="email"
-                    className="w-full bg-[#38bcf9] bg-opacity-25 p-2 text-white border rounded-full outline-none text-sm transition duration-150 ease-in-out mb-4"
+                    className="mb-4 w-full rounded-full border bg-[#38bcf9] bg-opacity-25 p-2 text-sm text-white outline-none transition duration-150 ease-in-out"
                     id="email"
                     placeholder="Your Email"
                   />
@@ -47,7 +47,7 @@ function Login() {
                   <label htmlFor="password">Password</label>
                   <input
                     type="password"
-                    className="w-full bg-[#38bcf9] bg-opacity-25 p-2 text-white border rounded-full outline-none text-sm transition duration-150 ease-in-out mb-4"
+                    className="mb-4 w-full rounded-full border bg-[#38bcf9] bg-opacity-25 p-2 text-sm text-white outline-none transition duration-150 ease-in-out"
                     id="password"
                     placeholder="Your Password"
                   />
@@ -56,14 +56,15 @@ function Login() {
                 <div>
                   <button
                     type="submit"
-                    className="bg-gray py-2 px-4 text-sm text-[#38bcf9] bg-opacity-25 rounded-full border-[#38bcf9] focus:outline-none focus:border-blue"
+                    className="bg-gray focus:border-blue rounded-full border-[#38bcf9] bg-opacity-25 px-4 py-2 text-sm text-[#38bcf9] focus:outline-none"
                   >
                     Login
                   </button>
                 </div>
               </form>
             </>
-          } size="large"
+          }
+          size="large"
         />
       )}
     </div>

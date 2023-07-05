@@ -5,7 +5,7 @@ import Buble from "../components/Buble";
 function Welcome() {
   return (
     <div className="h-screen">
-    <Buble text="buble" size="large" /> <br/><br/>
+    <Buble text="buble" size="large"/> <br/><br/>
       <p className="read-the-docs">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
