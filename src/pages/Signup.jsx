@@ -10,7 +10,7 @@ function Signup() {
   };
 
   return (
-    <>
+    <div id="background-wrap">
     <h1 className="text-base font-small text-primary mt-1 mb-1 text-center">
     <Buble text={ "Sign up 🫧"} size="small" />
         </h1><br></br>
@@ -55,7 +55,7 @@ function Signup() {
         </form>
       
     } size="large" />
-  </>
+  </div>
 );
   }
 export default Signup;

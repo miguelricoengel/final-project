@@ -22,7 +22,7 @@ function Login() {
       <button
         className="rounded border-none bg-transparent text-white hover:bg-transparent focus:outline-none"
         onClick={toggleButton}>
-        <Buble text="Login" size="medium" />
+        <Buble text="Login" size="small"/>
       </button>
 
       {isOpen && (

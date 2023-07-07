@@ -1,14 +1,13 @@
-// Buble.js
-
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-function Buble({ text, size }) {
+function Buble({ text, size, onClick }) {
   const [isDragging, setIsDragging] = useState(false);
   const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   const [position, setPosition] = useState({ x: 0, y: 0 });
 
   const handleMouseDown = (event) => {
+    event.stopPropagation(); // Prevent event propagation to parent component
     setIsDragging(true);
     setDragOffset({
       x: event.clientX - position.x,
@@ -49,7 +48,9 @@ function Buble({ text, size }) {
       className={`draggable-div ball2 flex justify-center items-center hover:drop-shadow-lg transition-shadow duration-300 cursor-grab select-none ${getSizeClassName()}`}
       style={{
         transform: `translate(${position.x}px, ${position.y}px)`,
+        animation: isDragging ? "none" : "float 4.5s ease-in-out infinite",
       }}
+      onClick={onClick} // Call the onClick prop passed from the parent component
     >
       {text}
     </div>
@@ -59,6 +60,7 @@ function Buble({ text, size }) {
 Buble.propTypes = {
   text: PropTypes.string.isRequired,
   size: PropTypes.oneOf(["small", "medium", "large"]).isRequired,
+  onClick: PropTypes.func.isRequired,
 };
 
 export default Buble;

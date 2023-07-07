@@ -16,15 +16,15 @@ function Navbar() {
 
   return (
     <>
-      <nav className="border-gray-200 bg-white dark:bg-transparent">
-        <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
-          <a className="flex items-center">
-            <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white"></span>
+      <nav className="border-gray-200 bg-white dark:bg-transparent" style={{zIndex:"-1"}}>
+        <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4"  style={{zIndex:"-1"}}>
+          <a className="flex items-center"  style={{zIndex:"-1"}}>
+            <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white"  style={{zIndex:"-1"}}></span>
           </a>
           <div className="flex items-center md:order-2">
             <button
               type="button"
-              className="mr-3 flex rounded-full bg-gray-800 text-sm focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 md:mr-0"
+              className="mr-2 flex rounded-full text-sm focus:ring-2 focus:ring-gray-300 dark:focus:ring-gray-600 md:mr-0"
               id="user-menu-button"
               aria-expanded="false"
               data-dropdown-toggle="user-dropdown"
@@ -38,7 +38,9 @@ function Navbar() {
                 alt="user photo"
               />
             </button>
-            {/* <!-- Dropdown menu --> */}
+
+            {/*  Dropdown menuu   */}
+
             <div
               className="z-50 my-4 hidden list-none divide-y divide-gray-100 rounded-lg bg-white/50 p-3 text-base "
               id="user-dropdown"
@@ -60,7 +62,7 @@ function Navbar() {
                 <li>
                   <Link
                     to="/signout"
-                    className="block text-gray m-2 block rounded-full bg-white/50 px-4 py-2 text-sm hover:bg-gray-100 "
+                    className="block text-gray m-2 rounded-full bg-white/50 px-4 py-2 text-sm hover:bg-gray-100 "
                   >
                     Sign out
                   </Link>
@@ -70,7 +72,7 @@ function Navbar() {
             <button
               data-collapse-toggle="navbar-user"
               type="button"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 md:hidden"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 md:hidden"
               aria-controls="navbar-user"
               aria-expanded={isNavbarUserOpen}
               onClick={toggleNavbarUser}
@@ -91,7 +93,7 @@ function Navbar() {
             className="hidden w-full items-center justify-between md:order-1 md:flex md:w-auto"
             id="navbar-user"
           >
-            <ul className="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-50 bg-white/50 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:p-0">
+            <ul className="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-50 bg-white/50 p-4 font-medium md:mt-0 md:bg-transparent md:flex-row md:space-x-8 md:border-0 md:p-0">
               <li>
                 <Link
                   to="/Dash"
