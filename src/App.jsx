@@ -3,7 +3,8 @@ import Profile from "./pages/Profile";
 import Signup from "./pages/signup";
 import Welcome from "./pages/Welcome";
 import Dash from "./pages/dash";
-import './index.css' 
+import './app.css';
+import './index.css';
 
 function App() {
   return (

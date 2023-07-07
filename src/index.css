@@ -2,50 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 @font-face {
-  font-family: 'CustomFont';
-  src: url('../fonts/Quicksand-Bold.ttf') format('truetype'),
-       url('../fonts/Quicksand-Light.ttf') format('truetype'),
-       url('../fonts/Quicksand-Medium.ttf') format('truetype'),
-       url('../fonts/Quicksand-Regular.ttf') format('truetype'),
-       url('../fonts/Quicksand-SemiBold.ttf') format('truetype');
+  font-family: "CustomFont";
+  src: url("../fonts/Quicksand-Bold.ttf") format("truetype"),
+    url("../fonts/Quicksand-Light.ttf") format("truetype"),
+    url("../fonts/Quicksand-Medium.ttf") format("truetype"),
+    url("../fonts/Quicksand-Regular.ttf") format("truetype"),
+    url("../fonts/Quicksand-SemiBold.ttf") format("truetype");
 }
 
 body {
-  font-family: 'CustomFont', sans-serif;
+  font-family: "CustomFont", sans-serif;
   line-height: 1.5;
   font-weight: 300;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
 }
 
 :root {
-  font-family: 'CustomFont', sans-serif;
+  font-family: "CustomFont", sans-serif;
   line-height: 1.5;
   font-weight: 300;
-  
   color-scheme: light dark;
   color: #38bcf9;
   background-color: #e1e1e1;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
   padding: 1rem;
-  @font-face {
-    font-family: 'CustomFont';
-    src: url('public/fonts/Quicksand-Bold.ttf') format('ttf'),
-         url('../public/fonts/Quicksand-Light.ttf') format('ttf'),
-         url('../public/fonts/Quicksand-Medium.ttf') format('ttf'),
-         url('../public/fonts/Quicksand-Regular.ttf') format('ttf'),
-         url('../public/fonts/Quicksand-SemiBold.ttf') format('ttf'),
-    /* Add additional font formats if necessary */
-  }
 }
 
 a {
@@ -59,8 +45,6 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -68,10 +52,9 @@ body {
 h1 {
   font-size: 5.2em;
   line-height: 1.1;
-
 }
 
-button {
+/* button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -89,8 +72,8 @@ button:focus,
 button:focus-visible {
   outline: 5px auto;
   box-shadow: 10px #e1e1e1;
-}
-
+} */
+/* 
 @media (prefers-color-scheme: light) {
   :root {
     color: #0088ff;
@@ -100,16 +83,13 @@ button:focus-visible {
     color: #747bff;
   }
 
-  button {
-    background-color: #f9f9f9;
-  }
 }
 
 .title{
   position: relative;
   font-size: 1.5rem;
 
-}
+} */
 
 /* If the screen size is 601px or more, set the font-size of <div> to 80px
 @media only screen and (min-width: 601px) {
@@ -123,8 +103,7 @@ button:focus-visible {
   div.example {
     font-size: 30px;
   }
-} */ 
-
+} */
 
 .ball {
   /* animation: float 3.5s ease-in-out infinite; */
@@ -150,7 +129,8 @@ button:focus-visible {
   animation-delay: 1s, 0.5s;
   border-radius: 50%;
   position: relative;
-
+  padding: 1rem;
+  border: #535bf2 1rem;
   background: radial-gradient(
     circle at 75% 30%,
     rgba(255, 255, 255, 0.5) 0.125rem,
@@ -158,10 +138,13 @@ button:focus-visible {
     rgba(255, 255, 255, 0.5) 3.75rem,
     rgba(0, 255, 255, 0.5) 6.25rem
   );
+  box-shadow: inset 0 0 1.25rem #fff, inset 0.625rem 0 2.875rem #eaf5fc,
+    inset 5.5rem 0rem 3.75rem #c2d8fe, inset -1.25rem -3.75rem 6.25rem #fde9ea,
+    inset 0 3.125rem 8.75rem #fde9ea, 0 0 5.625rem #fff;
 
-  box-shadow: inset 0 0 1.25rem #fff, inset 0.625rem 0 2.875rem #eaf5fc, inset 5.5rem 0rem 3.75rem #c2d8fe, inset -1.25rem -3.75rem 6.25rem #fde9ea, inset 0 3.125rem 8.75rem #fde9ea, 0 0 5.625rem #fff;
 }
 
+/* 
 @keyframes float {
   0% {
     transform: translatey(0px);
@@ -172,7 +155,7 @@ button:focus-visible {
   100% {
     transform: translatey(0px);
   }
-}
+} */
 
 .shadow {
   background: #b490b2;
@@ -182,7 +165,7 @@ button:focus-visible {
   animation: expand 4s infinite;
   position: absolute;
   border-radius: 50%;
-}
+} /*
 @keyframes expand {
   0%,
   100% {
@@ -192,8 +175,8 @@ button:focus-visible {
   50% {
     transform: scale(1);
   }
-}
-
+} */
+/* 
 @media only screen and (max-width:50px) {
   .ball {
     animation: float 4.5s ease-in-out infinite;
@@ -210,15 +193,15 @@ button:focus-visible {
     box-shadow: inset 0 -20px 30px #fff, inset 40px 0 46px #eaf5fc,
       inset 58px 0px 60px #c2d8fe, inset -8px -30px 100px #fde9ea,
       inset 0 20px 110px #fde9ea, 0 0 90px #fff;
-  }
+  } */
 
-  .shadow {
-    width: 90px;
-    height: 20px;
-    top: 78%;
-    animation: expand 5s infinite;
-  }
-
+.shadow {
+  width: 90px;
+  height: 20px;
+  top: 78%;
+  animation: expand 5s infinite;
+}
+/* 
   @keyframes float {
     0% {
       transform: translatey(0px);
@@ -230,4 +213,4 @@ button:focus-visible {
       transform: translatey(0px);
     }
   }
-}
+} */
