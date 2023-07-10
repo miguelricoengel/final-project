@@ -29,6 +29,8 @@ function Buble({ text, size, onClick }) {
 
   const getSizeClassName = () => {
     switch (size) {
+      case "xs":
+        return "w-14 h-14";
       case "small":
         return "w-28 h-28";
       case "medium":
