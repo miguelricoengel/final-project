@@ -10,7 +10,7 @@ function Profile() {
       />{" "}
       <br />
       <br />
-      <div className="flex grid grid-cols-1 content-stretch gap-2">
+      <div className="grid grid-cols-1 content-stretch gap-2">
         <h3>Username: </h3>
         <div className="m-2 flex items-center justify-center rounded-lg border border-gray-100 bg-gray-50 bg-white/50 p-1 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:p-0">
           @username
@@ -23,7 +23,11 @@ function Profile() {
         <div className="m-2 flex items-center justify-center rounded-lg border border-gray-100 bg-gray-50 bg-white/50 p-1 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:p-0">
           2
         </div>
-      </div>
+        <h3>Connected users: </h3>
+        <div className="m-2 flex items-center justify-center rounded-lg border border-gray-100 bg-gray-50 bg-white/50 p-1 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:p-0">
+          4
+        </div>
+      </div><br/>
     </div>
   );
 }

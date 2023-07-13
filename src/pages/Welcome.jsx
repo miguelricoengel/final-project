@@ -21,7 +21,7 @@ function Welcome() {
         <p>
           dont have an account yet? <Link to="/Signup">sign up here!</Link>
         </p>
-      </div>
+      </div><br/>
     </div>
   );
 }

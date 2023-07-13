@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import Buble from "../components/Buble";
 import Messages from "../components/Messages";
@@ -22,6 +23,22 @@ function Dash() {
       default:
         return <div>All content mixed, sorted by date</div>;
     }
+  };
+
+  const getDash = () => {
+ 
+    const storedToken = localStorage.getItem("authToken");
+
+    axios
+      .get(
+        `${API_URL}/api/Dashs/${DashId}`,
+        { headers: { Authorization: `Bearer ${storedToken}` } }
+      )
+      .then((response) => {
+        const oneDash = response.data;
+        setDash(oneDash);
+      })
+      .catch((error) => console.log(error));
   };
 
   return (

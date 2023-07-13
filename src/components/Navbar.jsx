@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/auth.context";
+
 
 function Navbar() {
   const [isUserDropdownOpen, setUserDropdownOpen] = useState(false);
@@ -14,12 +16,23 @@ function Navbar() {
     setUserDropdownOpen(false); // !!!!! FIX !!!!! Close the user-dropdown menu when the navbar-user menu opens
   };
 
+  const { user, logOutUser } = useContext(AuthContext);
+
   return (
     <>
-      <nav className="border-gray-200 bg-white dark:bg-transparent" style={{zIndex:"-1"}}>
-        <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4"  style={{zIndex:"-1"}}>
-          <a className="flex items-center"  style={{zIndex:"-1"}}>
-            <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white"  style={{zIndex:"-1"}}></span>
+      <nav
+        className="border-gray-200 bg-white dark:bg-transparent"
+        style={{ zIndex: "-1" }}
+      >
+        <div
+          className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4"
+          style={{ zIndex: "-1" }}
+        >
+          <a className="flex items-center" style={{ zIndex: "-1" }}>
+            <span
+              className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white"
+              style={{ zIndex: "-1" }}
+            ></span>
           </a>
           <div className="flex items-center md:order-2">
             <button
@@ -33,13 +46,13 @@ function Navbar() {
             >
               <span className="sr-only">Open user menu</span>
               <img
-                className="h-10 w-10 rounded-full p-1 border-2 border-blue-200"
-                src="https://media.istockphoto.com/id/1383831579/vector/double-thumbs-up-emoticon.jpg?s=612x612&w=0&k=20&c=gk_PkPyFLeQCB69U8vhxmzlyikncetntRGfRghJTEiM="
+                className="h-10 w-10 rounded-full border-2 border-blue-200 p-1"
+                src="/pics/smiley.png"
                 alt="user photo"
               />
             </button>
 
-            {/*  Dropdown menuu   */}
+            {/*  Dropdown menuuu  */}
 
             <div
               className="z-50 my-4 hidden list-none divide-y divide-gray-100 rounded-lg bg-white/50 p-3 text-base "
@@ -55,17 +68,27 @@ function Navbar() {
                   <Link
                     to="/Profile"
                     className="block rounded-full bg-white/50 p-1 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    aria-current="page"
                   >
                     Profile
                   </Link>
                 </li>
                 <li>
                   <Link
-                    to="/signout"
-                    className="block text-gray m-2 rounded-full bg-white/50 px-4 py-2 text-sm hover:bg-gray-100 "
+                    to="/profile/settings"
+                    className="block rounded-full bg-white/50 p-1 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    aria-current="page"
                   >
-                    Sign out
+                    Settings
                   </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/Welcome"
+                    className="text-gray m-2 block rounded-full bg-white/50 px-4 py-2 text-sm hover:bg-gray-100"
+                    aria-current="page"
+                    onClick={logOutUser}> Logout </Link>
+                  <span>{user && user.name}</span>
                 </li>
               </ul>
             </div>
@@ -93,8 +116,8 @@ function Navbar() {
             className="hidden w-full items-center justify-between md:order-1 md:flex md:w-auto"
             id="navbar-user"
           >
-            <ul className="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-50 bg-white/50 p-4 font-medium md:mt-0 md:bg-transparent md:flex-row md:space-x-8 md:border-0 md:p-0">
-            <li>
+            <ul className="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-50 bg-white/50 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-transparent md:p-0">
+              <li>
                 <Link
                   to="/Home"
                   className="block rounded-lg py-2 pl-3 pr-4 text-blue-500 hover:bg-blue-100 md:p-0 md:hover:bg-transparent md:hover:text-blue-700"
@@ -114,7 +137,7 @@ function Navbar() {
               </li>
               <li>
                 <Link
-                  to="/DashSettings"
+                  to="/dash/Settings"
                   className="block rounded-lg py-2 pl-3 pr-4 text-blue-500 hover:bg-blue-100 md:p-0 md:hover:bg-transparent md:hover:text-blue-700"
                   aria-current="page"
                 >
