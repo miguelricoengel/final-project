@@ -37,7 +37,7 @@ function Navbar() {
           <div className="flex items-center md:order-2">
             <button
               type="button"
-              className="mr-2 rounded-full text-sm focus:ring-2 focus:ring-gray-300 md:mr-0"
+              className="mr-2 rounded-full text-sm focus:ring-2 focus:ring-gray-300 md:mr-0 p-0.5"
               id="user-menu-button"
               aria-expanded="false"
               data-dropdown-toggle="user-dropdown"
@@ -46,7 +46,7 @@ function Navbar() {
             >
               <span className="sr-only">Open user menu</span>
               <img
-                className="h-10 w-10 rounded-full border-2 border-blue-200 p-1"
+                className="h-10 w-10 border-blue-200 p-1"
                 src="/pics/smiley.png"
                 alt="user photo"
               />

@@ -3,24 +3,26 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Buble from "../components/Buble";
 
-const API_URL = "http://localhost:5173";
+const API_URL = "http://localhost:5000";
 
-function Signup(props) {
-  const [username, setUsername] = useState("");
+function Signup() {
+  const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
+
   const navigate = useNavigate();
 
-  const handleUsernameChange = (e) => { setUsername(e.target.value) };
+  const handleUserNameChange = (e) => { setUserName(e.target.value) };
   const handleEmailChange = (e) => { setEmail(e.target.value) };
   const handlePasswordChange = (e) => { setPassword(e.target.value) };
+  
   const handleSubmit = async (e) => {
       e.preventDefault();
-      const requestBody = { email, password, username };
-      axios
-        .post(`${API_URL}/auth/signup`, requestBody)
-        .then((response) => {
+      const requestBody = { email, password, userName };
+      console.log(requestBody)
+      axios.post(`${API_URL}/auth/signup`, requestBody)
+        .then(() => {
           navigate("/Home");
         })
         .catch((error) => {
@@ -39,14 +41,14 @@ function Signup(props) {
           text={
             <form onSubmit={handleSubmit}>
               <div>
-                <label htmlFor="username">Username</label>
+                <label htmlFor="userName">UserName</label>
                 <input
                   type="text"
                   className="mb-4 w-full rounded-full border bg-[#38bcf9] bg-opacity-25 p-2 text-sm text-white outline-none transition duration-150 ease-in-out"
-                  id="username"
-                  placeholder="Your Username"
-                  value={username}
-                  onChange={handleUsernameChange}
+                  id="userName"
+                  placeholder="Your UserName"
+                  value={userName}
+                  onChange={handleUserNameChange}
                 />
               </div>
               <div>

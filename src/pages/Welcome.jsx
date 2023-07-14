@@ -5,8 +5,9 @@ import Buble from "../components/Buble";
 
 function Welcome() {
   return (
-    <div className="h-screen " id="background-wrap">
-    <Buble text="buble" size="large" /> <br/><br/>
+    <div className="h-screen z-1 front" id="background-wrap">
+    
+    <Buble text={<h1 className="text-white z-1">buble</h1>} size="large" /> <br/><br/>
       <p className="read-the-docs">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
@@ -19,7 +20,7 @@ function Welcome() {
       </div>
       <div className="flex justify-center">
         <p>
-          dont have an account yet? <Link to="/Signup">sign up here!</Link>
+          dont have an account yet? <Link to="/signup">sign up here!</Link>
         </p>
       </div><br/>
     </div>

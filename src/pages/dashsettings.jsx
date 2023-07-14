@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 function DashSettings() {
 
-  const API_URL = "http://localhost:5005";
+  const API_URL = "http://localhost:5000";
 
   const navigate = useNavigate();
   const { DashId } = useParams();
@@ -40,6 +40,7 @@ function DashSettings() {
         { headers: { Authorization: `Bearer ${storedToken}` } }
       )
       .then((response) => {
+        console.log(response)
         navigate(`/Dashes/${DashId}`);
       });
   };

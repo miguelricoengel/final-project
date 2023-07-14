@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Buble from "./Buble";
 import { AuthContext } from '../context/auth.context';
 
-const API_URL = "http://localhost:5173";
+const API_URL = "http://localhost:5000";
 
 function Login() {
   const [isOpen, setIsOpen] = useState(false);
@@ -15,27 +15,28 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
-
-  const navigate = useNavigate();
   const { storeToken, authenticateUser } = useContext(AuthContext);
+  
+  const navigate = useNavigate();
 
   const handleEmail = (e) => { setEmail(e.target.value) };
   const handlePassword = (e) => { setPassword(e.target.value) };
 
-  const handleSubmit = async (e) => { e.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
     const requestBody = { email, password };
- 
-    axios.post(`${API_URL}/auth/login`, requestBody)
-      .then((response) => {
-        console.log('JWT token', response.data.authToken );    
-      storeToken(response.data.authToken);
+
+    try {
+      const response = axios.post(`${API_URL}/auth/login`, requestBody);
+      const authToken = response.data.authToken;
+
+      storeToken(authToken);
       authenticateUser();
       navigate('/home');
-      })
-      .catch((error) => {
-        const errorDescription = error.response.data.message;
-        setErrorMessage(errorDescription);
-      })
+    } catch (error) {
+      const errorDescription = error.response.data.message;
+      setErrorMessage(errorDescription);
+    }
   };
 
   return (
