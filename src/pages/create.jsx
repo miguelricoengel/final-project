@@ -2,29 +2,42 @@ import axios from "axios";
 import Buble from "../components/Buble";
 import { useState } from "react";
 
-function Create() {
+function Create(props) {
 
-const handleSubmit = (e) => {
+  const API_URL = "/backend";
+
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [connect, setConnect] = useState("");
+  const [pic, setPic] = useState(null);
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const requestBody = { title, description, connect, pic };
-  
-    const storedToken = localStorage.getItem('authToken');
+    const formData = new FormData();
+    formData.append("title", title);
+    formData.append("description", description);
+    formData.append("connect", connect);
+    formData.append("pic", pic);
+
+    const storedToken = localStorage.getItem("authToken");
 
     axios
-      .post(
-      `${API_URL}/api/projects`,
-      requestBody,
-      { headers: { Authorization: `Bearer ${storedToken}` } }
-    )
+      .post(`${API_URL}/api/projects`, formData, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
       .then((response) => {
-      // Reset the state
-      setTitle("");
-      setDescription("");
-      setConnect("");
-      setPic("");
-      props.refreshProjects();
-    })
+        // Reset the state
+        setTitle("");
+        setDescription("");
+        setConnect("");
+        setPic(null);
+        props.refreshProjects();
+      })
       .catch((error) => console.log(error));
+  };
+
+  const handleFileChange = (e) => {
+    setPic(e.target.files[0]);
   };
 
   return (
@@ -34,7 +47,7 @@ const handleSubmit = (e) => {
       <br />
       <Buble
         text={
-          <form onSubmit="">
+          <form onSubmit={handleSubmit}>
             <div>
               <label htmlFor="Title">Title</label>
               <input
@@ -42,6 +55,8 @@ const handleSubmit = (e) => {
                 className="mb-4 w-full rounded-full border bg-[#38bcf9] bg-opacity-25 p-2 text-sm text-white outline-none transition duration-150 ease-in-out"
                 id="title"
                 placeholder="Dash Title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
               />
             </div>
             <div>
@@ -51,6 +66,8 @@ const handleSubmit = (e) => {
                 className="mb-4 w-full rounded-full border bg-[#38bcf9] bg-opacity-25 p-2 text-sm text-white outline-none transition duration-150 ease-in-out"
                 id="description"
                 placeholder="Dash Description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
               />
             </div>
             <div>
@@ -60,19 +77,22 @@ const handleSubmit = (e) => {
                 className="mb-4 w-full rounded-full border bg-[#38bcf9] bg-opacity-25 p-2 text-sm text-white outline-none transition duration-150 ease-in-out"
                 id="connect"
                 placeholder="generate code"
+                value={connect}
+                onChange={(e) => setConnect(e.target.value)}
               />
             </div>
-                <div>
-                  <label htmlFor="fileInput" className="mb-2 block">
-                    Select a picture
-                  </label>
-                  <input
-                    id="pic"
-                    type="file"
-                    onChange={""}
-                    className="mb-4 w-full rounded-full border bg-[#38bcf9] bg-opacity-25 p-2 text-sm text-white outline-none transition duration-150 ease-in-out"
-                   />
-                </div><br/>
+            <div>
+              <label htmlFor="fileInput" className="mb-2 block">
+                Select a picture
+              </label>
+              <input
+                id="pic"
+                type="file"
+                onChange={handleFileChange}
+                className="mb-4 w-full rounded-full border bg-[#38bcf9] bg-opacity-25 p-2 text-sm text-white outline-none transition duration-150 ease-in-out"
+              />
+            </div>
+            <br />
 
             <div>
               <button
@@ -84,8 +104,7 @@ const handleSubmit = (e) => {
             </div>
           </form>
         }
-        size="large"
-      />
+        size="xl" />
     </div>
   );
 }

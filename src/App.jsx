@@ -10,20 +10,20 @@ import ProfileSettings from "./pages/ProfileSettings";
 import './app.css';
 import './index.css';
 import IsPrivate from "./components/IsPrivate"; 
-import IsAnon from "./components/IsAnon"; 
-
+// import IsAnon from "./components/IsAnon"; 
+import Navbar from "./components/Navbar.jsx"
 
 function App() {
   return (
       <Routes>
-        <Route exact path="/" element={<IsAnon> <Welcome /> </IsAnon>} />
-        <Route path="/signup" element={<IsAnon> <Signup /> </IsAnon> } />
-        <Route path="/profile" element={ <IsPrivate> <Profile /> </IsPrivate>} />
-        <Route path="/dash" element={ <IsPrivate> <Dash /> </IsPrivate>} />
-        <Route path="/home" element={ <IsPrivate> <Home /> </IsPrivate> } />
-        <Route path="/dash/create" element={<IsPrivate> <Create /> </IsPrivate> } />
-        <Route path="/dash/settings" element={<IsPrivate> <Dashsettings /> </IsPrivate>} />
-        <Route path="/profile/settings" element={<IsPrivate> <ProfileSettings /> </IsPrivate> } />
+        <Route exact path="/" element={ <Welcome /> } />
+        <Route path="/signup" element={ <Signup /> } />
+        <Route path="/profile" element={ <IsPrivate> <Navbar /> <Profile /> </IsPrivate>} />
+        <Route path="/dash" element={ <IsPrivate> <Navbar /> <Dash /> </IsPrivate>} />
+        <Route path="/home" element={ <IsPrivate> <Navbar /> <Home /> </IsPrivate> } />
+        <Route path="/dash/create" element={<IsPrivate> <Navbar /> <Create /> </IsPrivate> } />
+        <Route path="/dash/settings" element={<IsPrivate> <Navbar /> <Dashsettings /> </IsPrivate>} />
+        <Route path="/profile/settings" element={<IsPrivate> <Navbar /> <ProfileSettings /> </IsPrivate> } />
       </Routes>
   );
 }

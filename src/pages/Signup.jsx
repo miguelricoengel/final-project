@@ -3,7 +3,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Buble from "../components/Buble";
 
-const API_URL = "http://localhost:5000";
+const API_URL = "/backend";
 
 function Signup() {
   const [userName, setUserName] = useState("");

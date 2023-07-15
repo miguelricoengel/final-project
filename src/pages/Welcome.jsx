@@ -5,6 +5,7 @@ import Buble from "../components/Buble";
 
 function Welcome() {
   return (
+    
     <div className="h-screen z-1 front" id="background-wrap">
     
     <Buble text={<h1 className="text-white z-1">buble</h1>} size="large" /> <br/><br/>

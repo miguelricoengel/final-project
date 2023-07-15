@@ -4,7 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 function DashSettings() {
 
-  const API_URL = "http://localhost:5000";
+  const API_URL = "/backend";
 
   const navigate = useNavigate();
   const { DashId } = useParams();

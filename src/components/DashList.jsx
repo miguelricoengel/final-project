@@ -4,7 +4,7 @@ import DashListItem from "./DashListItem";
 
 function DashList() {
 
-  const API_URL = "http://localhost:5000";
+  const API_URL = "/backend";
   const [Dashes, setDashes] = useState([]);
   const storedToken = localStorage.getItem("authToken");
 
