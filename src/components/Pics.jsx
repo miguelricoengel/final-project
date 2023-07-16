@@ -1,6 +1,7 @@
 function Pics() {
   return (
-  <p>Pics content</p>
+  <p>Pics content
+  axios pre ***</p>
   );
 }
 

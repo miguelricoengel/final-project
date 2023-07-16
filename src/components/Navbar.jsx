@@ -1,11 +1,11 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
-
 
 function Navbar() {
   const [isUserDropdownOpen, setUserDropdownOpen] = useState(false);
   const [isNavbarUserOpen, setNavbarUserOpen] = useState(false);
+  const userDropdownRef = useRef(null);
 
   const toggleUserDropdown = () => {
     setUserDropdownOpen(!isUserDropdownOpen);
@@ -13,26 +13,30 @@ function Navbar() {
 
   const toggleNavbarUser = () => {
     setNavbarUserOpen(!isNavbarUserOpen);
-    setUserDropdownOpen(false); // !!!!! FIX !!!!! Close the user-dropdown menu when the navbar-user menu opens
+    setUserDropdownOpen(false);
   };
 
   const { user, logOutUser } = useContext(AuthContext);
 
+  const handleClickOutside = (event) => {
+    if (userDropdownRef.current && !userDropdownRef.current.contains(event.target)) {
+      setUserDropdownOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <>
-      <nav
-        className="border-gray-200 bg-white dark:bg-transparent"
-        style={{ zIndex: "-1" }}
-      >
-        <div
-          className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4"
-          style={{ zIndex: "-1" }}
-        >
-          <a className="flex items-center" style={{ zIndex: "-1" }}>
-            <span
-              className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white"
-              style={{ zIndex: "-1" }}
-            ></span>
+      <nav className="border-gray-200 bg-white dark:bg-transparent">
+        <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
+          <a className="flex items-center">
+            <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white"></span>
           </a>
           <div className="flex items-center md:order-2">
             <button
@@ -40,8 +44,6 @@ function Navbar() {
               className="mr-2 rounded-full text-sm focus:ring-2 focus:ring-gray-300 md:mr-0 p-0.5"
               id="user-menu-button"
               aria-expanded="false"
-              data-dropdown-toggle="user-dropdown"
-              data-dropdown-placement="bottom"
               onClick={toggleUserDropdown}
             >
               <span className="sr-only">Open user menu</span>
@@ -52,16 +54,16 @@ function Navbar() {
               />
             </button>
 
-            {/*  Dropdown menuuu  */}
-
             <div
-              className="z-50 my-4 hidden list-none divide-y divide-gray-100 rounded-lg bg-white/50 p-3 text-base "
-              id="user-dropdown"
+              className={`${
+                isUserDropdownOpen ? "" : "hidden"
+              } list-none divide-x divide-gray-100 rounded-lg bg-white/50 p-3 text-base`}
+              ref={userDropdownRef}
+              aria-expanded= {isUserDropdownOpen}
+              onClick={toggleUserDropdown}
             >
-              <div className="">
-                <span className="text-gray m-2 rounded-full p-2 text-sm">
-                  @Username
-                </span>
+              <div className="text-gray m-2 rounded-full p-2 text-sm">
+                {user && `@${user.userName}`}
               </div>
               <ul className="py-2" aria-labelledby="user-menu-button">
                 <li>
@@ -87,16 +89,17 @@ function Navbar() {
                     to="/Welcome"
                     className="text-gray m-2 block rounded-full bg-white/50 px-4 py-2 text-sm hover:bg-gray-100"
                     aria-current="page"
-                    onClick={logOutUser}> Logout </Link>
-                  <span>{user && user.name}</span>
+                    onClick={logOutUser}
+                  >
+                    Logout
+                  </Link>
                 </li>
               </ul>
             </div>
             <button
-              data-collapse-toggle="navbar-user"
               type="button"
               className="inline-flex h-10 w-10 items-center justify-center rounded-lg p-2 text-sm text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 md:hidden"
-              aria-controls="navbar-user"
+              id="settings-menu-button"
               aria-expanded={isNavbarUserOpen}
               onClick={toggleNavbarUser}
             >
@@ -113,7 +116,9 @@ function Navbar() {
             </button>
           </div>
           <div
-            className="hidden w-full items-center justify-between md:order-1 md:flex md:w-auto"
+            className={`${
+              isNavbarUserOpen ? "" : "hidden"
+            } w-full items-center justify-between md:order-1 md:flex md:w-auto`}
             id="navbar-user"
           >
             <ul className="mt-4 flex flex-col rounded-lg border border-gray-100 bg-gray-50 bg-white/50 p-4 font-medium md:mt-0 md:flex-row md:space-x-8 md:border-0 md:bg-transparent md:p-0">

@@ -1,52 +1,38 @@
-import axios from "axios";
-import Buble from "../components/Buble";
 import { useState } from "react";
+import axios from "axios";
+
+const API_URL = "/backend";
 
 function Create(props) {
-
-  const API_URL = "/backend";
-
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [connect, setConnect] = useState("");
-  const [pic, setPic] = useState(null);
-
+  // const [pic, setPic] = useState(null);
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("description", description);
-    formData.append("connect", connect);
-    formData.append("pic", pic);
-
-    const storedToken = localStorage.getItem("authToken");
-
+    const requestBody = { title, description };
+    console.log(requestBody)
     axios
-      .post(`${API_URL}/api/projects`, formData, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
+      .post(`${API_URL}/api/create`, requestBody)
       .then((response) => {
-        // Reset the state
+        console.log(response.data)
         setTitle("");
         setDescription("");
-        setConnect("");
-        setPic(null);
-        props.refreshProjects();
+        // setPic(null);
+        // props.refreshDashboard(requestBody);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => console.log(`holi, ${error}`));
   };
 
-  const handleFileChange = (e) => {
-    setPic(e.target.files[0]);
-  };
+  // const handleFileChange = (e) => {
+  //   const file = e.target.files[0];
+  //   setPic(file);
+  // };
 
   return (
     <div>
       <p>Create new Dash</p>
       <br />
       <br />
-      <Buble
-        text={
           <form onSubmit={handleSubmit}>
             <div>
               <label htmlFor="Title">Title</label>
@@ -70,18 +56,7 @@ function Create(props) {
                 onChange={(e) => setDescription(e.target.value)}
               />
             </div>
-            <div>
-              <label htmlFor="Connect">Connect</label>
-              <input
-                type="text"
-                className="mb-4 w-full rounded-full border bg-[#38bcf9] bg-opacity-25 p-2 text-sm text-white outline-none transition duration-150 ease-in-out"
-                id="connect"
-                placeholder="generate code"
-                value={connect}
-                onChange={(e) => setConnect(e.target.value)}
-              />
-            </div>
-            <div>
+            {/* <div>
               <label htmlFor="fileInput" className="mb-2 block">
                 Select a picture
               </label>
@@ -91,7 +66,7 @@ function Create(props) {
                 onChange={handleFileChange}
                 className="mb-4 w-full rounded-full border bg-[#38bcf9] bg-opacity-25 p-2 text-sm text-white outline-none transition duration-150 ease-in-out"
               />
-            </div>
+            </div> */}
             <br />
 
             <div>
@@ -103,8 +78,6 @@ function Create(props) {
               </button>
             </div>
           </form>
-        }
-        size="xl" />
     </div>
   );
 }

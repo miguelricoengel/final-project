@@ -1,6 +1,6 @@
-function Messages() {
+function Messages(quote) {
     return (
-    <p>Messages content</p>
+    <p>{quote.text}</p>
     );
   }
   

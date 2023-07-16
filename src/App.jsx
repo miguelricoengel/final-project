@@ -19,10 +19,10 @@ function App() {
         <Route exact path="/" element={ <Welcome /> } />
         <Route path="/signup" element={ <Signup /> } />
         <Route path="/profile" element={ <IsPrivate> <Navbar /> <Profile /> </IsPrivate>} />
-        <Route path="/dash" element={ <IsPrivate> <Navbar /> <Dash /> </IsPrivate>} />
-        <Route path="/home" element={ <IsPrivate> <Navbar /> <Home /> </IsPrivate> } />
+        <Route path="/dash/:dashId" element={ <IsPrivate> <Navbar /> <Dash /> </IsPrivate>} />
+        <Route path="/home/" element={ <IsPrivate> <Navbar /> <Home /> </IsPrivate> } />
         <Route path="/dash/create" element={<IsPrivate> <Navbar /> <Create /> </IsPrivate> } />
-        <Route path="/dash/settings" element={<IsPrivate> <Navbar /> <Dashsettings /> </IsPrivate>} />
+        <Route path="/dash/:dashId/settings/" element={<IsPrivate> <Navbar /> <Dashsettings /> </IsPrivate>} />
         <Route path="/profile/settings" element={<IsPrivate> <Navbar /> <ProfileSettings /> </IsPrivate> } />
       </Routes>
   );
