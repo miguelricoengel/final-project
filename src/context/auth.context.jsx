@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import PropTypes from "prop-types";
 
-const API_URL = "/backend";
+const API_URL = '/backend';
 
 const AuthContext = React.createContext();
 
@@ -24,10 +25,10 @@ function AuthProviderWrapper(props) {
       .then((response) => {
         const user = response.data;     
         setIsLoggedIn(true);
-        setIsLoading(false);
+        setIsLoading(false);  
         setUser(user);        
       })
-      .catch((error) => {    
+      .catch(() => {    
         setIsLoggedIn(false);
         setIsLoading(false);
         setUser(null);        
@@ -65,5 +66,9 @@ function AuthProviderWrapper(props) {
   </AuthContext.Provider>
 )
 }
+
+AuthProviderWrapper.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export { AuthProviderWrapper, AuthContext };

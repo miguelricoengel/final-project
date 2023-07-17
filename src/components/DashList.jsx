@@ -4,13 +4,13 @@ import DashListItem from "./DashListItem";
 
 function DashList() {
 
-  const API_URL = "/backend";
+  const API_URL = '/backend';
   const [Dashes, setDashes] = useState([]);
   const storedToken = localStorage.getItem("authToken");
 
   const getAllDashes = () => {
     axios
-      .get(`${API_URL}/api/Dashes`,
+      .get(`${API_URL}/api/dash`,
       { headers: { Authorization: `Bearer ${storedToken}` } })
       .then((response) => setDashes(response.data))
       .catch((error) => console.log(error));

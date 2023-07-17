@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-// const API_URL = "/backend";
+const API_URL = '/backend';
 
 function Create() {
   const [title, setTitle] = useState("");
@@ -12,7 +12,7 @@ function Create() {
     const requestBody = { title, description };
     console.log(requestBody)
     axios
-      .post(`http://localhost:5001/create`, requestBody)
+      .post(`${API_URL}/api/create`, requestBody)
       .then((response) => {
         console.log(response.data)
         setTitle("");

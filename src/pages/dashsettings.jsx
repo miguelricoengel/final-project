@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from 'react-router-dom';
 
 function DashSettings() {
 
-  const API_URL = "/backend";
+  const API_URL = '/backend';
 
   const navigate = useNavigate();
   const { DashId } = useParams();
@@ -16,7 +16,7 @@ function DashSettings() {
     const storedToken = localStorage.getItem('authToken');
     axios
       .get(
-        `${API_URL}/api/Dashes/${DashId}`,
+        `${API_URL}/api/${DashId}/settings`,
         { headers: { Authorization: `Bearer ${storedToken}` } }
       )
       .then((response) => {
@@ -35,13 +35,13 @@ function DashSettings() {
 
     axios
       .put(
-        `${API_URL}/api/Dashes/${DashId}`,
+        `${API_URL}/api/${DashId}/settings`,
         requestBody,
         { headers: { Authorization: `Bearer ${storedToken}` } }
       )
       .then((response) => {
         console.log(response)
-        navigate(`/Dashes/${DashId}`);
+        navigate(`/dash/${DashId}`);
       });
   };
 

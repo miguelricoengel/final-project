@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Buble from "./Buble";
 import { AuthContext } from '../context/auth.context';
 
-const API_URL = "/backend";
+const API_URL = '/backend';
 
 function Login() {
   const [isOpen, setIsOpen] = useState(false);

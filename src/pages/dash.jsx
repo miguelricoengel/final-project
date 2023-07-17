@@ -7,7 +7,7 @@ import Pics from "../components/Pics";
 import Songs from "../components/Songs";
 import All from "../components/All";
 
-const API_URL = "/backend";
+const API_URL = '/backend';
 
 function Dash() {
   const [dashboard, setDashboard] = useState(null);

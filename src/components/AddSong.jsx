@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 function AddSong({ onAddPlaylist }) {
   const [playlistUrl, setPlaylistUrl] = useState("");
@@ -34,6 +35,10 @@ function AddSong({ onAddPlaylist }) {
     </form>
   );
 }
+
+AddSong.propTypes = {
+  onAddPlaylist: PropTypes.func.isRequired,
+};
 
 function Songs() {
   const [playlists, setPlaylists] = useState([

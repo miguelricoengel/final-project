@@ -3,14 +3,14 @@ import { AuthContext } from "../context/auth.context";
 import { Navigate } from "react-router-dom";
 import PropTypes from "prop-types";
 
-function IsAnon({ children }) {
+function IsAnon( { children } ) {
   
   const { isLoggedIn, isLoading } = useContext(AuthContext);
 
   if (isLoading) return <p>Loading ...</p>;
 
   if (isLoggedIn) { 
-     return <Navigate to="/" />;
+     return <Navigate to="/home" />;
   } else {
     return children;
   }
