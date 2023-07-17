@@ -6,6 +6,7 @@ import Messages from "../components/Messages";
 import Pics from "../components/Pics";
 import Songs from "../components/Songs";
 import All from "../components/All";
+import Create from "./Create";
 
 const API_URL = '/backend';
 
@@ -66,7 +67,7 @@ function Dash() {
             text="pics"
             size="small"
             onClick={() => handleBubleClick("pics")}
-            refreshDash={getDashboard}
+            refreshDashboard={getDashboard}
             DashId={dashId}
           /> 
           <br />
@@ -74,7 +75,7 @@ function Dash() {
             text="songs"
             size="small"
             onClick={() => handleBubleClick("songs")}
-            refreshDash={getDashboard}
+            refreshDashboard={getDashboard}
             DashId={dashId}
           />
           <br />
@@ -82,7 +83,7 @@ function Dash() {
             text="messages"
             size="small"
             onClick={() => handleBubleClick("messages")}
-            refreshDash={getDashboard}
+            refreshDashboard={getDashboard}
             DashId={dashId}
           />
           <br />
@@ -90,7 +91,7 @@ function Dash() {
             text="all"
             size="small"
             onClick={() => handleBubleClick("")}
-            refreshDash={getDashboard}
+            refreshDashboard={getDashboard}
             DashId={dashId}
             />
          
