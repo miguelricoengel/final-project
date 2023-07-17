@@ -111,8 +111,8 @@ function Create(props) {
   );
 }
 
-Create.propTypes = {
-  refreshDashboard: PropTypes.func.isRequired,
-};
+// Create.propTypes = {
+//   refreshDashboard: PropTypes.func.isRequired,
+// };
 
 export default Create;

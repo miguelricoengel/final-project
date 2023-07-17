@@ -4,11 +4,11 @@ import PropTypes from "prop-types";
 function DashListItem ( { title, description, _id, photo, connectedUser } ) {
   
   return (
-    <div className="flex">
-       <Link to={`/dahes/${_id}`}>
+    <div className="">
+       <Link to={`/${_id}`}>
     <div className="w-1/4 flex items-start">
       <img
-        className="h-10 w-10 rounded-full border-2 border-blue-200 p-1"
+        className="h-10 w-70 rounded-full border-2 border-blue-200 p-1"
         src={photo}
         alt="user photo"/>   
     </div>

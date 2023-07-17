@@ -60,12 +60,11 @@ function Buble({ text, size }) {
 
   
   return (
-  <>
   <div
     // onMouseDown={handleMouseDown}
     // onMouseMove={handleMouseMove}
     // onMouseUp={handleMouseUp}
-    className={`draggable-div ball2 flex select-none items-center justify-center transition-shadow duration-300 hover:drop-shadow-lg ${getSizeClassName()}`}
+    className={`draggable-div ball2 flex select-none items-center justify-center transition-shadow duration-300 hover:drop-shadow-lg  hover:cursor-pointer ${getSizeClassName()}`}
     // style={{
     //   transform: `translate(${position.x}px, ${position.y}px)`,
     //   animation: isDragging ? "none" : "float 4.5s ease-in-out infinite",
@@ -78,12 +77,11 @@ function Buble({ text, size }) {
         {["xs", "small", "medium", "large", "xl"].includes(size) && background()}
       </div>
     </div>
-    </>
   );
 }
 
 Buble.propTypes = {
-  text: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
+  text: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   size: PropTypes.oneOf(["xs", "small", "medium", "large", "xl"]).isRequired,
   onClick: PropTypes.func,
 };

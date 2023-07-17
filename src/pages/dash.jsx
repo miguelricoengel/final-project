@@ -11,29 +11,44 @@ const API_URL = "/backend";
 
 function Dash() {
   const [dashboard, setDashboard] = useState(null);
+  const [selectedItem, setSelectedItem] = useState("");
   const { dashId } = useParams();
   const storedToken = localStorage.getItem("authToken");
-  const [selectedItem, setSelectedItem] = useState("");
 
   const handleBubleClick = (item) => {
     setSelectedItem(item);
   };
-
-  console.log(dashId);
-
+  
   const renderContent = () => {
+    if (!dashboard) {
+      return null;
+    }
     switch (selectedItem) {
       case "pics":
-        return <Pics />;
+        return (
+          <>
+            {dashboard &&
+              dashboard.posts
+                .filter((post) => post.format === "Image")
+                .map((post) => <Pics key={post._id} {...post.idContent} />)}
+          </>
+        );
       case "songs":
-        return <Songs />;
+        return (
+          <>
+            {dashboard &&
+              dashboard.posts
+                .filter((post) => post.format === "Song")
+                .map((post) => <Songs key={post._id} {...post.idContent} />)}
+          </>
+        );
       case "messages":
         return (
           <>
             {dashboard &&
-              dashboard.posts.idContent
-                .filter((posts) => posts.format === "Quote")
-                .map((quote) => <Messages key={quote._id} {...quote} />)}
+              dashboard.posts
+                .filter((post) => post.format === "Quote")
+                .map((post) => <Messages key={post._id} {...post.idContent} />)}
           </>
         );
       default:
@@ -60,13 +75,14 @@ function Dash() {
   return (
     <div className="m-4 mb-4 flex h-screen">
       <div className="w-1/3">
-        <Buble
-          text="pics"
-          size="small"
-          onClick={() => handleBubleClick("pics")}
-          refreshDashboard={getDashboard}
-          DashId={dashId}
-        />
+        <div onClick={() => handleBubleClick("pics")}>
+          <Buble
+            text="pics"
+            size="small"
+            refreshDashboard={getDashboard}
+            DashId={dashId}
+          />
+        </div>
         <br />
         <Buble
           text="songs"
@@ -92,6 +108,7 @@ function Dash() {
           DashId={dashId}
         />
       </div>
+  
       <div className="w-2/3">{renderContent()}</div>
     </div>
   );
