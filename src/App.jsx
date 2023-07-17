@@ -4,7 +4,7 @@ import Signup from "./pages/signup";
 import Welcome from "./pages/Welcome";
 import Dash from "./pages/dash";
 import Home from "./pages/Home";
-import Create from "./pages/Create";
+import Create from "./pages/create";
 import Dashsettings from "./pages/Dashsettings";
 import ProfileSettings from "./pages/ProfileSettings";
 import './app.css';
@@ -12,6 +12,8 @@ import './index.css';
 import IsPrivate from "./components/isPrivate"; 
 import IsAnon from "./components/isAnon"; 
 import Navbar from "./components/Navbar.jsx"
+import AddMessage from "./components/addMessage";
+import AddImage from "./components/addImage";
 
 function App() {
   return (
@@ -21,8 +23,10 @@ function App() {
         <Route path="/profile" element={ <IsPrivate> <Navbar /> <Profile /> </IsPrivate>} />
         <Route path="/:dashId" element={ <IsPrivate> <Navbar /> <Dash /> </IsPrivate>} />
         <Route path="/home/" element={ <IsPrivate> <Navbar /> <Home /> </IsPrivate> } />
-        <Route path="/dash/create" element={<IsPrivate> <Navbar /> <Create /> </IsPrivate> } />
-        <Route path="/dash/:dashId/settings/" element={<IsPrivate> <Navbar /> <Dashsettings /> </IsPrivate>} />
+        <Route path="/create" element={<IsPrivate> <Navbar /> <Create /> </IsPrivate> } />
+        <Route path="/:dashId/settings/" element={<IsPrivate> <Navbar /> <Dashsettings /> </IsPrivate>} />
+        <Route path="/:dashId/Post-message/" element={<IsPrivate> <Navbar /> <AddMessage /> </IsPrivate>} />
+        <Route path="/:dashId/Post-image/" element={<IsPrivate> <Navbar /> <AddImage /> </IsPrivate>} />
         <Route path="/profile/settings" element={<IsPrivate> <Navbar /> <ProfileSettings /> </IsPrivate> } />
       </Routes>
   );
