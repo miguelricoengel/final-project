@@ -6,23 +6,26 @@ import { useNavigate } from "react-router-dom";
 const API_URL = '/backend';
 
 function AddMessage() {
-  const [message, setMessage] = useState("");
+  const [text, setText] = useState("");
 
   const { dashId } = useParams()
   const navigate = useNavigate()
+
+  const handleText = (e) => {
+    setText(e.target.value)
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const storedToken = localStorage.getItem("authToken");
 
-    const formData = new FormData();
-    formData.append('text', message);
+    const requestBody = { text }
 
     axios
       .post(
         `${API_URL}/api/${dashId}/create-quote`,
-        formData,
+        requestBody,
         {
           headers: {
             Authorization: `Bearer ${storedToken}`
@@ -30,9 +33,8 @@ function AddMessage() {
         }
       )
       .then(() => {
-        setMessage("");
+        setText("");
         navigate(`/${dashId}`)
-        // props.refreshDash();
       })
       .catch((error) => console.log(error));
   };
@@ -48,8 +50,9 @@ function AddMessage() {
         <textarea
           type="text"
           name="text"
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          id="text"
+          value={ text }
+          onChange={handleText}
         />
 
         <button type="submit">Post Message</button>
