@@ -4,7 +4,7 @@ function ProfileSettings () {
     return (
         <div>
         <h2>Profile Settings</h2><br/><br/>
-        <Buble text={
+
             <form onSubmit="">
               <div>
                 <label htmlFor="username">Username</label>
@@ -62,8 +62,6 @@ function ProfileSettings () {
                 </button>
               </div>
             </form>
-          
-        } size="xlarge" />
         </div>
     )
 }

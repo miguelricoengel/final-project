@@ -9,15 +9,15 @@ import Dashsettings from "./pages/Dashsettings";
 import ProfileSettings from "./pages/ProfileSettings";
 import './app.css';
 import './index.css';
-import IsPrivate from "./components/IsPrivate"; 
-import IsAnon from "./components/IsAnon"; 
+import IsPrivate from "./components/isPrivate"; 
+import IsAnon from "./components/isAnon"; 
 import Navbar from "./components/Navbar.jsx"
 
 function App() {
   return (
       <Routes>
         <Route exact path="/" element={ <IsAnon> <Welcome /> </IsAnon> } />
-        <Route path="/signup" element={ <isAnon> <Signup /> </isAnon> } />
+        <Route path="/signup" element={ <IsAnon> <Signup /> </IsAnon> } />
         <Route path="/profile" element={ <IsPrivate> <Navbar /> <Profile /> </IsPrivate>} />
         <Route path="/dash/:dashId" element={ <IsPrivate> <Navbar /> <Dash /> </IsPrivate>} />
         <Route path="/home/" element={ <IsPrivate> <Navbar /> <Home /> </IsPrivate> } />

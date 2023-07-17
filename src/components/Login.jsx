@@ -32,7 +32,6 @@ function Login() {
 
       storeToken(authToken);
       authenticateUser();
-      console.log('JWT token', authToken );
       navigate("/home");
     } catch (error) {
       const errorDescription = error.response.data.message;
