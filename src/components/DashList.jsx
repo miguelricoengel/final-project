@@ -2,6 +2,8 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import DashListItem from "./DashListItem";
 
+const API_URL = "/backend";
+
 function DashList() {
 
   const API_URL = "/backend";
