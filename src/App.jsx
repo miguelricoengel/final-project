@@ -21,13 +21,13 @@ function App() {
         <Route exact path="/" element={ <IsAnon> <Welcome /> </IsAnon> } />
         <Route path="/signup" element={ <IsAnon> <Signup /> </IsAnon> } />
         <Route path="/profile" element={ <IsPrivate> <Navbar /> <Profile /> </IsPrivate>} />
-        <Route path="/:dashId" element={ <IsPrivate> <Navbar /> <Dash /> </IsPrivate>} />
+        <Route path="/profile/settings" element={<IsPrivate> <Navbar /> <ProfileSettings /> </IsPrivate> } />
         <Route path="/home/" element={ <IsPrivate> <Navbar /> <Home /> </IsPrivate> } />
         <Route path="/create" element={<IsPrivate> <Navbar /> <Create /> </IsPrivate> } />
+        <Route path="/:dashId" element={ <IsPrivate> <Navbar /> <Dash /> </IsPrivate>} />
         <Route path="/:dashId/settings/" element={<IsPrivate> <Navbar /> <Dashsettings /> </IsPrivate>} />
         <Route path="/:dashId/Post-message/" element={<IsPrivate> <Navbar /> <AddMessage /> </IsPrivate>} />
         <Route path="/:dashId/Post-image/" element={<IsPrivate> <Navbar /> <AddImage /> </IsPrivate>} />
-        <Route path="/profile/settings" element={<IsPrivate> <Navbar /> <ProfileSettings /> </IsPrivate> } />
       </Routes>
   );
 }
