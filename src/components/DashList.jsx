@@ -2,6 +2,8 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import DashListItem from "./DashListItem";
 
+const API_URL = "/backend";
+
 function DashList() {
 
   const [Dashes, setDashes] = useState([]);
@@ -9,7 +11,7 @@ function DashList() {
 
   const getAllDashes = () => {
     axios
-      .get(`/api/dash`,
+      .get(`${API_URL}/api/`,
       { headers: { Authorization: `Bearer ${storedToken}` } })
       .then((response) => setDashes(response.data))
       .catch((error) => console.log(error));

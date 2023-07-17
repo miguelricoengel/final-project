@@ -1,14 +1,17 @@
 import { useState } from "react";
 import axios from "axios";
-import PropTypes from "prop-types";
+// import PropTypes from "prop-types";
+import { useNavigate } from "react-router-dom";
 // import { Image } from 'cloudinary-react';
 
-function Create(props) {
+function Create() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
   const API_URL = '/backend';
   const storedToken = localStorage.getItem("authToken");
+
+  const navigate = useNavigate()
 
   const handleTitle = (e) => {
     setTitle(e.target.value);
@@ -43,6 +46,7 @@ function Create(props) {
         setTitle("");
         setDescription("");
         setImage(null)
+        navigate("/Home")
         // props.refreshDashboard();
       })
       .catch((error) => {
@@ -111,8 +115,8 @@ function Create(props) {
   );
 }
 
-Create.propTypes = {
-  refreshDashboard: PropTypes.func.isRequired,
-};
+// Create.propTypes = {
+//   refreshDashboard: PropTypes.func.isRequired,
+// };
 
 export default Create;
