@@ -86,7 +86,7 @@ function Navbar() {
                 </li>
                 <li>
                   <Link
-                    to="/Welcome"
+                    to="/"
                     className="text-gray m-2 block rounded-full bg-white/50 px-4 py-2 text-sm hover:bg-gray-100"
                     aria-current="page"
                     onClick={logOutUser}

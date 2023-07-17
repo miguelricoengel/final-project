@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Buble from "../components/Buble";
 import DashList from "../components/DashList";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 
 function Home() {
@@ -26,7 +26,7 @@ function Home() {
         </Link>
       </div>
       <div className="flex items-end justify-end">
-        <Link to="/dash/settings">
+        <Link to="/dash/:dashID/settings">
           {" "}
           <Buble text={<p className="text-sm">settings</p>} size="small" />{" "}
         </Link>

@@ -1,64 +1,61 @@
 import { useState } from "react";
 import axios from "axios";
+import PropTypes from "prop-types";
+// import { Image } from 'cloudinary-react';
 
-const API_URL = "/backend";
-
-function Create() {
+function Create(props) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [error, setError] = useState("");
-  // const [pic, setPic] = useState(null);
+  const [image, setImage] = useState(null);
+  const API_URL = '/backend';
+  const storedToken = localStorage.getItem("authToken");
 
   const handleTitle = (e) => {
-    flushErrors();
     setTitle(e.target.value);
   }
   const handleDescription = (e) => {
-    flushErrors();
     setDescription(e.target.value);
   }
-  const flushErrors = () => {
-    setError('');
-  }
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const requestBody = { title, description };
-    const storedToken = localStorage.getItem("authToken");
+    const formData = new FormData();
+    formData.append('image', image);
+    formData.append('title', title);
+    formData.append('description', description);
 
-    console.log(requestBody);
 
-    if (!storedToken){
-      setError('Token Error');
-    }
-
-    axios
-      .post(`${API_URL}/api/create`, requestBody, {
+    axios.post(
+      `${API_URL}/api/create`, formData, 
+      {
         headers: {
           Authorization: `Bearer ${storedToken}`,
-        },
-      })
+          'Content-Type': 'multipart/form-data'
+        }
+      }
+    )
+    
+    
       .then((response) => {
         console.log(response.data);
         setTitle("");
         setDescription("");
-        // SetPic("")
-        props.refreshDashboard();
+        setImage(null)
+        // props.refreshDashboard();
       })
       .catch((error) => {
-      setError(error.response.data)
       console.log(`Error: ${error.message}`)
       }
       );
   };
 
  
-
-  // const handleFileChange = (e) => {
-  //   const file = e.target.files[0];
-  //   setPic(file);
-  // };
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setImage(file);
+  };
 
   return (
     <div>
@@ -88,17 +85,17 @@ function Create() {
             onChange={handleDescription}
           />
         </div>
-        {/* <div>
+        <div>
               <label htmlFor="fileInput" className="mb-2 block">
                 Select a picture
               </label>
               <input
-                id="pic"
+                id="image"
                 type="file"
                 onChange={handleFileChange}
                 className="mb-4 w-full rounded-full border bg-[#38bcf9] bg-opacity-25 p-2 text-sm text-white outline-none transition duration-150 ease-in-out"
               />
-            </div> */}
+            </div>
         <br />
 
         <div>
@@ -113,5 +110,9 @@ function Create() {
     </div>
   );
 }
+
+Create.propTypes = {
+  refreshDashboard: PropTypes.func.isRequired,
+};
 
 export default Create;

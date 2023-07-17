@@ -58,6 +58,7 @@ function Buble({ text, size }) {
     );
   };
 
+  
   return (
   <>
   <div
@@ -82,9 +83,9 @@ function Buble({ text, size }) {
 }
 
 Buble.propTypes = {
-  text: PropTypes.string.isRequired,
+  text: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
   size: PropTypes.oneOf(["xs", "small", "medium", "large", "xl"]).isRequired,
-  onClick: PropTypes.func.isRequired,
+  onClick: PropTypes.func,
 };
 
 export default Buble;

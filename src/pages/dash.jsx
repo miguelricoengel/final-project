@@ -6,9 +6,8 @@ import Messages from "../components/Messages";
 import Pics from "../components/Pics";
 import Songs from "../components/Songs";
 import All from "../components/All";
-import Create from "./Create";
 
-const API_URL = '/backend';
+const API_URL = "/backend";
 
 function Dash() {
   const [dashboard, setDashboard] = useState(null);
@@ -20,7 +19,7 @@ function Dash() {
     setSelectedItem(item);
   };
 
-  console.log( dashId )
+  console.log(dashId);
 
   const renderContent = () => {
     switch (selectedItem) {
@@ -29,18 +28,18 @@ function Dash() {
       case "songs":
         return <Songs />;
       case "messages":
-        return <Messages />;
+        return (
+          <>
+            {dashboard &&
+              dashboard.posts.idContent
+                .filter((posts) => posts.format === "Quote")
+                .map((quote) => <Messages key={quote._id} {...quote} />)}
+          </>
+        );
       default:
-        return <Messages refreshDashboard={getDashboard} dashId={dashId} /> && <All />;
+        return <All />;
     }
-  };     
-
-  {dashboard &&
-    dashboard.posts.idContent
-      .filter((posts) => posts.format === "Quote")
-      .map((quote) => <Messages key={quote._id} {...quote}
-      />)
-  }
+  };
 
   const getDashboard = () => {
     axios
@@ -59,47 +58,42 @@ function Dash() {
   }, []);
 
   return (
-    <>
-      <div className="m-4 mb-4 flex h-screen">
-        <div className="w-1/3">
-
-          <Buble
-            text="pics"
-            size="small"
-            onClick={() => handleBubleClick("pics")}
-            refreshDashboard={getDashboard}
-            DashId={dashId}
-          /> 
-          <br />
-          <Buble
-            text="songs"
-            size="small"
-            onClick={() => handleBubleClick("songs")}
-            refreshDashboard={getDashboard}
-            DashId={dashId}
-          />
-          <br />
-          <Buble
-            text="messages"
-            size="small"
-            onClick={() => handleBubleClick("messages")}
-            refreshDashboard={getDashboard}
-            DashId={dashId}
-          />
-          <br />
-          <Buble
-            text="all"
-            size="small"
-            onClick={() => handleBubleClick("")}
-            refreshDashboard={getDashboard}
-            DashId={dashId}
-            />
-         
-        </div>
-        <div className="w-2/3">{renderContent()}</div>
+    <div className="m-4 mb-4 flex h-screen">
+      <div className="w-1/3">
+        <Buble
+          text="pics"
+          size="small"
+          onClick={() => handleBubleClick("pics")}
+          refreshDashboard={getDashboard}
+          DashId={dashId}
+        />
+        <br />
+        <Buble
+          text="songs"
+          size="small"
+          onClick={() => handleBubleClick("songs")}
+          refreshDashboard={getDashboard}
+          DashId={dashId}
+        />
+        <br />
+        <Buble
+          text="messages"
+          size="small"
+          onClick={() => handleBubleClick("messages")}
+          refreshDashboard={getDashboard}
+          DashId={dashId}
+        />
+        <br />
+        <Buble
+          text="all"
+          size="small"
+          onClick={() => handleBubleClick("")}
+          refreshDashboard={getDashboard}
+          DashId={dashId}
+        />
       </div>
-      <div id="background-wrap"></div>
-    </>
+      <div className="w-2/3">{renderContent()}</div>
+    </div>
   );
 }
 

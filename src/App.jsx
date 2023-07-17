@@ -19,7 +19,7 @@ function App() {
         <Route exact path="/" element={ <IsAnon> <Welcome /> </IsAnon> } />
         <Route path="/signup" element={ <IsAnon> <Signup /> </IsAnon> } />
         <Route path="/profile" element={ <IsPrivate> <Navbar /> <Profile /> </IsPrivate>} />
-        <Route path="/dash/:dashId" element={ <IsPrivate> <Navbar /> <Dash /> </IsPrivate>} />
+        <Route path="/:dashId" element={ <IsPrivate> <Navbar /> <Dash /> </IsPrivate>} />
         <Route path="/home/" element={ <IsPrivate> <Navbar /> <Home /> </IsPrivate> } />
         <Route path="/dash/create" element={<IsPrivate> <Navbar /> <Create /> </IsPrivate> } />
         <Route path="/dash/:dashId/settings/" element={<IsPrivate> <Navbar /> <Dashsettings /> </IsPrivate>} />
