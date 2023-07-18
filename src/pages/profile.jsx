@@ -1,13 +1,30 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Buble from "../components/Buble";
 import { AuthContext } from "../context/auth.context";
-// import { Image } from 'cloudinary-react';
+import axios from "axios";
 
-function Profile(image) {
-  const { user } = useContext(AuthContext);
-  const [imageSrc, setImageSrc] = useState(image);
-  console.log(user);
+function Profile() {
+  const [imageSrc, setImageSrc] = useState("");
+  const [user, setUser] = useState("");
+  const API_URL = "/backend";
+  const storedToken = localStorage.getItem("authToken");
+
+  useEffect(() => {
+    axios
+      .get(`${API_URL}/api/profile`, {
+        headers: {
+          Authorization: `Bearer ${storedToken}`,
+        },
+      })
+      .then((response) => {
+        const userInfo = response.data;
+        console.log(userInfo)
+        setUser(userInfo)
+        setImageSrc(userInfo.profileImage || "/pics/Bubble_Pose.png");
+      })
+      .catch((error) => console.log(error));
+  }, [storedToken]);
 
   function handleImageError() {
     setImageSrc("/pics/Bubble_Pose.png");
@@ -15,8 +32,11 @@ function Profile(image) {
 
   return (
     <div id="background-wrap">
-      <Link to = "/home"><Buble text={<h6 className="text-sm"> home</h6>} size="xs" /></Link>
-      <h2 className="text-xl">Profile Page</h2><br/>
+      <Link to="/home">
+        <Buble text={<h6 className="text-sm">home</h6>} size="xs" />
+      </Link>
+      <h2 className="text-xl">Profile Page</h2>
+      <br />
       <Buble
         text={
           <div>
@@ -24,14 +44,14 @@ function Profile(image) {
               <img
                 className="h-full w-full rounded-full p-16"
                 src={imageSrc}
-                alt="image"
+                alt="profile image"
                 onError={handleImageError}
               />
             ) : (
               <img
                 className="h-12 w-12 rounded-full border-2 border-blue-200 p-1"
                 src="/pics/Bubble_Pose.png"
-                alt="default image"
+                alt="default profile image"
               />
             )}
           </div>
@@ -53,8 +73,11 @@ function Profile(image) {
         <div className="fixed bottom-0 right-0">
           <Link to={`/profile/settings`}>
             <Buble text="settings" size="small" />
-          </Link> 
-        </div><br /><br /><br />
+          </Link>
+        </div>
+        <br />
+        <br />
+        <br />
       </div>
       <br />
     </div>

@@ -83,7 +83,7 @@ function Navbar(image) {
               <ul className="py-2" aria-labelledby="user-menu-button">
                 <li>
                   <Link
-                    to="/Profile"
+                    to="/profile"
                     className="block rounded-full bg-white/50 p-1 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                     aria-current="page"
                   >
