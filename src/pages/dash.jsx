@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Buble from "../components/Buble";
 import Messages from "../components/Messages";
 import Pics from "../components/Pics";
@@ -113,6 +113,11 @@ function Dash() {
               </div>
             ))}
       </div>
+      <div className="fixed bottom-0 right-0">
+          <Link to={`/${dashId}/settings`}>
+            <Buble text="settings" size="small" />
+          </Link>
+        </div>
     </div>
   );
 }

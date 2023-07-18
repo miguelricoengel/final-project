@@ -41,12 +41,12 @@ function Navbar(image) {
 
   return (
     <>
-      <nav className="relative z-10 border-gray-200 bg-white dark:bg-transparent">
+      <nav className="absolute w-full z-10 border-gray-200 bg-white dark:bg-transparent ">
         <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
-          <a className="flex items-center">
+          <a className="flex items-center ">
             <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white"></span>
           </a>
-          <div className="flex items-center">
+          <div className="flex items-centershadow-md ">
             <button
               type="button"
               className="mr-2 rounded-full border-blue-200 p-1 text-sm focus:ring-2 focus:ring-gray-300 "
@@ -79,7 +79,7 @@ function Navbar(image) {
             } w-full items-center justify-between `}
             id="navbar-user"
           >
-            <ul className="mt-4 flex w-full flex-col items-center justify-center rounded-lg border border-gray-100 bg-gray-50 bg-white/50 p-4 font-medium">
+            <ul className="mt-4 flex w-full flex-col items-center justify-center rounded-lg border border-gray-100 bg-gray-50 bg-white/75 p-4 font-medium shadow-xl">
               <div className="block w-full rounded-lg bg-blue-500/50 p-2 text-sm text-white">
                 {user && `@${user.userName}`}
               </div>
