@@ -4,15 +4,19 @@ import { AuthContext } from "../context/auth.context";
 import Buble from "../components/Buble";
 import { useNavigate } from "react-router-dom";
 
-function ProfileSettings() {
+function ProfileSettings(image) {
   const { user } = useContext(AuthContext);
   const [userName, setUserName] = useState(`${user.userName}`);
   const [profileImage, setProfileImage] = useState("");
+  const [imageSrc, setImageSrc] = useState(image);
   const API_URL = "/backend";
   const storedToken = localStorage.getItem("authToken");
 
   const navigate = useNavigate();
 
+  function handleImageError() {
+    setImageSrc("/pics/Bubble_Pose.png");
+  }
 
   const handleUserName = (e) => {
     setUserName(e.target.value);
@@ -52,9 +56,27 @@ function ProfileSettings() {
       <br />
       <div className="flex">
         <Buble
-          text={<img src={user && user.profileImage} className="w-40" />}
-          size="medium"
-        />
+        text={
+          <div>
+            {imageSrc ? (
+              <img
+                className="h-full w-full rounded-full p-16"
+                src={imageSrc}
+                alt="image"
+                onError={handleImageError}
+              />
+            ) : (
+              <img
+                className="h-12 w-12 rounded-full border-2 border-blue-200 p-1"
+                src="/pics/Bubble_Pose.png"
+                alt="default image"
+              />
+            )}
+          </div>
+        }
+        className="w-40"
+        size="medium"
+      />
       </div>
       <form onSubmit={handleSubmit}>
         <div>

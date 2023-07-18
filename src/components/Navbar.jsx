@@ -2,7 +2,7 @@ import { useContext, useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 
-function Navbar() {
+function Navbar(image) {
   const [isUserDropdownOpen, setUserDropdownOpen] = useState(false);
   const [isNavbarUserOpen, setNavbarUserOpen] = useState(false);
   const userDropdownRef = useRef(null);
@@ -17,12 +17,18 @@ function Navbar() {
   };
 
   const { user, logOutUser } = useContext(AuthContext);
+  const [imageSrc, setImageSrc] = useState(image);
 
   const handleClickOutside = (event) => {
     if (userDropdownRef.current && !userDropdownRef.current.contains(event.target)) {
       setUserDropdownOpen(false);
     }
   };
+
+  function handleImageError() {
+    setImageSrc("/pics/Bubble_Pose.png");
+  }
+
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
@@ -47,11 +53,20 @@ function Navbar() {
               onClick={toggleUserDropdown}
             >
               <span className="sr-only">Open user menu</span>
+              <div>{imageSrc ? (
               <img
                 className="h-10 w-10 border-blue-200 p-1"
-                src="/pics/smiley.png"
-                alt="user photo"
+                src={imageSrc}
+                alt="image"
+                onError={handleImageError}
               />
+            ) : (
+              <img
+                className="h-12 w-12 rounded-full border-2 border-blue-200 p-1"
+                src="/pics/Bubble_Pose.png"
+                alt="default image"
+              />
+            )}</div>
             </button>
 
             <div
@@ -107,7 +122,6 @@ function Navbar() {
               <svg
                 className="h-5 w-5"
                 aria-hidden="true"
-                xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 17 14"
               >
