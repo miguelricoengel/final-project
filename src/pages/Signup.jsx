@@ -10,16 +10,18 @@ function Signup() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
+  const [dashboardId, setDashboardId] = useState("");
 
   const navigate = useNavigate();
 
   const handleUserNameChange = (e) => { setUserName(e.target.value) };
   const handleEmailChange = (e) => { setEmail(e.target.value) };
   const handlePasswordChange = (e) => { setPassword(e.target.value) };
+  const handleCode = (e) => { setDashboardId(e.target.value) };
   
   const handleSubmit = async (e) => {
       e.preventDefault();
-      const requestBody = { email, password, userName };
+      const requestBody = { email, password, userName, dashboardId };
       console.log(requestBody)
       axios.post(`${API_URL}/auth/signup`, requestBody)
         .then(() => {
@@ -46,7 +48,7 @@ function Signup() {
                   type="text"
                   className="mb-4 w-full rounded-full border bg-[#38bcf9] bg-opacity-25 p-2 text-sm text-white outline-none transition duration-150 ease-in-out"
                   id="userName"
-                  placeholder="Your UserName"
+                  placeholder="Your Username"
                   value={userName}
                   onChange={handleUserNameChange}
                 />
@@ -71,6 +73,17 @@ function Signup() {
                   placeholder="Your Password"
                   value={password}
                   onChange={handlePasswordChange}
+                />
+              </div>
+              <div>
+                <label htmlFor="dashboardId">Code</label>
+                <input
+                  type="text"
+                  className="mb-4 w-full rounded-full border bg-[#38bcf9] bg-opacity-25 p-2 text-sm text-white outline-none transition duration-150 ease-in-out"
+                  id="dashboardId"
+                  placeholder="Your Code"
+                  value={dashboardId}
+                  onChange={handleCode}
                 />
               </div>
 
