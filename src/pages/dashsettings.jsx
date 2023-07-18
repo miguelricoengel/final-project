@@ -16,7 +16,7 @@ function DashSettings() {
     const storedToken = localStorage.getItem('authToken');
     axios
       .get(
-        `${API_URL}/api/${DashId}/settings`,
+        `${API_URL}/api/dashboard/${DashId}/settings`,
         { headers: { Authorization: `Bearer ${storedToken}` } }
       )
       .then((response) => {
