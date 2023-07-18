@@ -14,6 +14,7 @@ import IsAnon from "./components/isAnon";
 import Navbar from "./components/Navbar.jsx"
 import AddMessage from "./components/addMessage";
 import AddImage from "./components/addImage";
+import './normalize.css'
 
 function App() {
   return (
