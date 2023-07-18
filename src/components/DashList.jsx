@@ -21,7 +21,7 @@ function DashList() {
   }, []);
 
   return (
-    <div className="DashList">
+    <div className="DashList w-72 h-48 overflow-auto">
       {Dashes.map((dash) => (
         <DashListItem key={dash._id} {...dash} />
       ))}
