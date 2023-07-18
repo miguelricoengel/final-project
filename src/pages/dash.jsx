@@ -16,7 +16,7 @@ function Dash() {
   const storedToken = localStorage.getItem("authToken");
 
   const handleBubleClick = (item) => {
-    setSelectedItem(item);
+    setSelectedItem(item);  
   };
 
   const getDashboard = () => {
@@ -93,7 +93,7 @@ function Dash() {
           <Buble text="messages" size="small" />
         </div>
         <br />
-        <div onClick={() => handleBubleClick("all")}> {/* "all" selected by default */}
+        <div onClick={() => handleBubleClick("all")}>
           <Buble text="all" size="small" />
         </div>
       </div>
@@ -106,6 +106,34 @@ function Dash() {
         <Link to={`/${dashId}/settings`}>
           <Buble text="settings" size="small" />
         </Link>
+      </div>
+
+      <div className="fixed bottom-0 left-0 ml-4 mb-4">
+        {/* Dropdown menu */}
+        <select
+          className="bg-blue-500 text-white px-4 py-2 rounded-md"
+          onChange={(e) => {
+            const selectedOption = e.target.value;
+            switch (selectedOption) {
+              case "songs":
+                window.location.href = `/${dashId}/post-song/`;
+                break;
+              case "pics":
+                window.location.href = `/${dashId}/post-image/`;
+                break;
+              case "messages":
+                window.location.href = `/${dashId}/post-message/`;
+                break;
+              default:
+                break;
+            }
+          }}
+        >
+          <option value="">¡share something!</option>
+          <option value="songs">Song</option>
+          <option value="pics">Pic</option>
+          <option value="messages">Message</option>
+        </select>
       </div>
     </div>
   );
