@@ -11,7 +11,7 @@ const API_URL = "/backend";
 
 function Dash() {
   const [dashboard, setDashboard] = useState(null);
-  const [selectedItem, setSelectedItem] = useState("");
+  const [selectedItem, setSelectedItem] = useState("all"); // Default selected item is "all"
   const { dashId } = useParams();
   const storedToken = localStorage.getItem("authToken");
 
@@ -19,12 +19,22 @@ function Dash() {
     setSelectedItem(item);
   };
 
+  const getDashboard = () => {
+    axios
+      .get(`${API_URL}/api/dashboard/${dashId}`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then((response) => {
+        const oneDash = response.data;
+        // Sort posts by timestamp in descending order
+        oneDash.posts.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+        setDashboard(oneDash);
+      })
+      .catch((error) => console.log(error));
+  };
+
   const renderContent = () => {
     if (!dashboard) {
-      return null;
-    }
-
-    if (!dashboard.posts) {
       return null;
     }
 
@@ -64,18 +74,6 @@ function Dash() {
     }
   };
 
-  const getDashboard = () => {
-    axios
-      .get(`${API_URL}/api/dashboard/${dashId}`, {
-        headers: { Authorization: `Bearer ${storedToken}` },
-      })
-      .then((response) => {
-        const oneDash = response.data;
-        setDashboard(oneDash);
-      })
-      .catch((error) => console.log(error));
-  };
-
   useEffect(() => {
     getDashboard();
   }, []);
@@ -95,29 +93,20 @@ function Dash() {
           <Buble text="messages" size="small" />
         </div>
         <br />
-        <div onClick={() => handleBubleClick("")}>
+        <div onClick={() => handleBubleClick("all")}> {/* "all" selected by default */}
           <Buble text="all" size="small" />
         </div>
       </div>
 
       <div className="w-2/3">
         {renderContent()}
-        {dashboard &&
-          dashboard.posts
-            .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
-            .map((post) => (
-              <div key={post._id}>
-                {post.format === "Image" && <Pics {...post.idContent} />}
-                {post.format === "Song" && <Songs {...post.idContent} />}
-                {post.format === "Quote" && <Messages {...post.idContent} />}
-              </div>
-            ))}
       </div>
+
       <div className="fixed bottom-0 right-0">
-          <Link to={`/${dashId}/settings`}>
-            <Buble text="settings" size="small" />
-          </Link>
-        </div>
+        <Link to={`/${dashId}/settings`}>
+          <Buble text="settings" size="small" />
+        </Link>
+      </div>
     </div>
   );
 }
