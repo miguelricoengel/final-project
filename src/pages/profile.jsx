@@ -1,7 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Buble from "../components/Buble";
-import { AuthContext } from "../context/auth.context";
 import axios from "axios";
 
 function Profile() {
