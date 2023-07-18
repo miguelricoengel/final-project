@@ -41,7 +41,7 @@ function Navbar(image) {
 
   return (
     <>
-      <nav className="absolute w-full z-10 border-gray-200 bg-white dark:bg-transparent ">
+      <nav className=" z-10 border-gray-200 bg-white dark:bg-transparent ">
         <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
           <a className="flex items-center ">
             <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white"></span>
