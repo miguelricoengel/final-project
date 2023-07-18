@@ -27,14 +27,16 @@ function Dash() {
     if (!dashboard.posts) {
       return null;
     }
-    
+
     switch (selectedItem) {
       case "pics":
         return (
           <>
             {dashboard.posts
               .filter((post) => post.format === "Image")
-              .map((post) => <Pics key={post._id} {...post.idContent} />)}
+              .map((post) => (
+                <Pics key={post._id} {...post.idContent} />
+              ))}
           </>
         );
       case "songs":
@@ -42,7 +44,9 @@ function Dash() {
           <>
             {dashboard.posts
               .filter((post) => post.format === "Song")
-              .map((post) => <Songs key={post._id} {...post.idContent} />)}
+              .map((post) => (
+                <Songs key={post._id} {...post.idContent} />
+              ))}
           </>
         );
       case "messages":
@@ -50,7 +54,9 @@ function Dash() {
           <>
             {dashboard.posts
               .filter((post) => post.format === "Quote")
-              .map((post) => <Messages key={post._id} {...post.idContent} />)}
+              .map((post) => (
+                <Messages key={post._id} {...post.idContent} />
+              ))}
           </>
         );
       default:
@@ -60,7 +66,7 @@ function Dash() {
 
   const getDashboard = () => {
     axios
-      .get(`${API_URL}/api/${dashId}`, {
+      .get(`${API_URL}/api/dashboard/${dashId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
       })
       .then((response) => {
@@ -95,15 +101,17 @@ function Dash() {
       </div>
 
       <div className="w-2/3">
-        {dashboard && dashboard.posts
-          .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
-          .map((post) => (
-            <div key={post._id}>
-              {post.format === "Image" && <Pics {...post.idContent} />}
-              {post.format === "Song" && <Songs {...post.idContent} />}
-              {post.format === "Quote" && <Messages {...post.idContent} />}
-            </div>
-          ))}
+        {renderContent()}
+        {dashboard &&
+          dashboard.posts
+            .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+            .map((post) => (
+              <div key={post._id}>
+                {post.format === "Image" && <Pics {...post.idContent} />}
+                {post.format === "Song" && <Songs {...post.idContent} />}
+                {post.format === "Quote" && <Messages {...post.idContent} />}
+              </div>
+            ))}
       </div>
     </div>
   );
