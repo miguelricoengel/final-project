@@ -24,7 +24,7 @@ function AddMessage() {
 
     axios
       .post(
-        `${API_URL}/api/dashboard/${dashId}/create-quote`,
+        `${API_URL}/api/${dashId}/create-quote`,
         requestBody,
         {
           headers: {

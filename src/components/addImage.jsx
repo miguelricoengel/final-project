@@ -25,7 +25,7 @@ function AddMessage() {
     formData.append("path", path);
 
     axios
-      .post(`${API_URL}/api/dashboard/${dashId}/create-image`, formData, {
+      .post(`${API_URL}/api/${dashId}/create-image`, formData, {
         headers: {
           Authorization: `Bearer ${storedToken}`,
           "Content-Type": "multipart/form-data",
