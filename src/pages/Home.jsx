@@ -19,14 +19,14 @@ function Home() {
         <Buble text={<DashList />} size="large" />
       </div>
       <div className="flex items-center justify-center">
-        <Link to="/dash/create" className="flex">
+        <Link to="/create" className="flex">
           <Buble text="+" size="xs" className="" />
           <div className="m-2"></div>
           <label className="flex">create new Dash</label>
         </Link>
       </div>
       <div className="flex items-end justify-end">
-        <Link to="/dash/:dashID/settings">
+        <Link to="/:dashID/settings">
           {" "}
           <Buble text={<p className="text-sm">settings</p>} size="small" />{" "}
         </Link>

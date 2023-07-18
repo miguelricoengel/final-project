@@ -10,7 +10,7 @@ function DashList() {
 
   const getAllDashes = () => {
     axios
-      .get(`${API_URL}/api/dash`,
+      .get(`${API_URL}/api/`,
       { headers: { Authorization: `Bearer ${storedToken}` } })
       .then((response) => setDashes(response.data))
       .catch((error) => console.log(error));
