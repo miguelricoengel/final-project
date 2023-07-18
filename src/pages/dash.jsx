@@ -18,41 +18,43 @@ function Dash() {
   const handleBubleClick = (item) => {
     setSelectedItem(item);
   };
-  
+
   const renderContent = () => {
     if (!dashboard) {
       return null;
     }
+
+    if (!dashboard.posts) {
+      return null;
+    }
+    
     switch (selectedItem) {
       case "pics":
         return (
           <>
-            {dashboard &&
-              dashboard.posts
-                .filter((post) => post.format === "Image")
-                .map((post) => <Pics key={post._id} {...post.idContent} />)}
+            {dashboard.posts
+              .filter((post) => post.format === "Image")
+              .map((post) => <Pics key={post._id} {...post.idContent} />)}
           </>
         );
       case "songs":
         return (
           <>
-            {dashboard &&
-              dashboard.posts
-                .filter((post) => post.format === "Song")
-                .map((post) => <Songs key={post._id} {...post.idContent} />)}
+            {dashboard.posts
+              .filter((post) => post.format === "Song")
+              .map((post) => <Songs key={post._id} {...post.idContent} />)}
           </>
         );
       case "messages":
         return (
           <>
-            {dashboard &&
-              dashboard.posts
-                .filter((post) => post.format === "Quote")
-                .map((post) => <Messages key={post._id} {...post.idContent} />)}
+            {dashboard.posts
+              .filter((post) => post.format === "Quote")
+              .map((post) => <Messages key={post._id} {...post.idContent} />)}
           </>
         );
       default:
-        return <All />;
+        return <All dashboard={dashboard} />;
     }
   };
 
@@ -76,40 +78,33 @@ function Dash() {
     <div className="m-4 mb-4 flex h-screen">
       <div className="w-1/3">
         <div onClick={() => handleBubleClick("pics")}>
-          <Buble
-            text="pics"
-            size="small"
-            refreshDashboard={getDashboard}
-            DashId={dashId}
-          />
+          <Buble text="pics" size="small" />
         </div>
         <br />
-        <Buble
-          text="songs"
-          size="small"
-          onClick={() => handleBubleClick("songs")}
-          refreshDashboard={getDashboard}
-          DashId={dashId}
-        />
+        <div onClick={() => handleBubleClick("songs")}>
+          <Buble text="songs" size="small" />
+        </div>
         <br />
-        <Buble
-          text="messages"
-          size="small"
-          onClick={() => handleBubleClick("messages")}
-          refreshDashboard={getDashboard}
-          DashId={dashId}
-        />
+        <div onClick={() => handleBubleClick("messages")}>
+          <Buble text="messages" size="small" />
+        </div>
         <br />
-        <Buble
-          text="all"
-          size="small"
-          onClick={() => handleBubleClick("")}
-          refreshDashboard={getDashboard}
-          DashId={dashId}
-        />
+        <div onClick={() => handleBubleClick("")}>
+          <Buble text="all" size="small" />
+        </div>
       </div>
-  
-      <div className="w-2/3">{renderContent()}</div>
+
+      <div className="w-2/3">
+        {dashboard && dashboard.posts
+          .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp))
+          .map((post) => (
+            <div key={post._id}>
+              {post.format === "Image" && <Pics {...post.idContent} />}
+              {post.format === "Song" && <Songs {...post.idContent} />}
+              {post.format === "Quote" && <Messages {...post.idContent} />}
+            </div>
+          ))}
+      </div>
     </div>
   );
 }
