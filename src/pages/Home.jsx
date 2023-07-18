@@ -42,7 +42,7 @@ function Home() {
 
   return (
     <div id="flex">
-      <h2 className="m-3 flex items-start p-3 text-xl">Home</h2>
+      <h2 className="ml-3 pl-3 flex items-start text-xl">Home</h2>
       <h2 className="m-3 flex items-start p-3">
         {" "}
         Welcome back @{" "}
@@ -86,10 +86,11 @@ function Home() {
                </form>
           }
                 
-              />{" "}
+              size="medium"/>
           
           {errorMessage && <p className="error-message">{errorMessage}</p>}
       </div>
+      <br/>
     </div>
   );
 }

@@ -21,7 +21,7 @@ function Profile(image) {
           <div>
             {imageSrc ? (
               <img
-                className="h-full w-full rounded-full p-16 backdrop-filter backdrop-blur-lg"
+                className="h-full w-full rounded-full p-16"
                 src={imageSrc}
                 alt="image"
                 onError={handleImageError}
