@@ -3,8 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-const API_URL = '/backend';
-
+const API_URL = "/backend";
 
 function AddMessage() {
   const [path, setPath] = useState(null);
@@ -40,13 +39,12 @@ function AddMessage() {
 
   return (
     <div className="">
-      <h3>Add New Image</h3>
+      <h3>Want to add an image?</h3>
+      <br />
 
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="fileInput" className="mb-2 block">
-            Select a picture
-          </label>
+          <label htmlFor="fileInput" className="mb-2 block"></label>
           <input
             id="image"
             type="file"
@@ -54,7 +52,12 @@ function AddMessage() {
             className="mb-4 w-full rounded-full border bg-[#38bcf9] bg-opacity-25 p-2 text-sm text-white outline-none transition duration-150 ease-in-out"
           />
         </div>
-        <button type="submit">Upload Image</button>
+        <button
+          type="submit"
+          className="bg-gray focus:border-blue rounded-full border-[#38bcf9] px-4 py-2 text-sm text-blue-700 focus:outline-none"
+        >
+          Upload Image
+        </button>
       </form>
     </div>
   );
