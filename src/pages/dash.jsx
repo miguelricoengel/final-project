@@ -80,7 +80,6 @@ function Dash() {
 
   return (
     <div className="m-4 mb-4 flex h-screen">
-      <div className=" fixed">
       <div className="w-1/3">
         <div onClick={() => handleBubleClick("pics")}>
           <Buble text="pics" size="small" />
@@ -98,8 +97,8 @@ function Dash() {
           <Buble text="all" size="small" />
         </div>
       </div>
-</div>
-      <div className="">
+
+      <div className="w-2/3">
         {renderContent()}
       </div>
 
