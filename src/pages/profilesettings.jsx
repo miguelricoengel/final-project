@@ -59,17 +59,17 @@ function ProfileSettings(image) {
     e.preventDefault();
 
     axios
-    .delete(`${API_URL}/api/profile`, {
-      headers: {Authorization: `Bearer ${storedToken}`},
-    })
-    .then(() => {
-      logOutUser();
-      navigate("/");
-    })
-    .catch((error) => {
-      console.log(`Error: ${error.message}`);
-    });
-};
+      .delete(`${API_URL}/api/profile`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then(() => {
+        logOutUser();
+        navigate("/");
+      })
+      .catch((error) => {
+        console.log(`Error: ${error.message}`);
+      });
+  };
   return (
     <div>
       <h2 className="text-lg font-bold mb-4">Profile Settings</h2>
@@ -158,7 +158,7 @@ function ProfileSettings(image) {
         </div>
       </form>
       <form onSubmit={handleDelete} className="mt-2 mb-8">
-      <div>
+        <div>
           <button
             type="submit"
             className="bg-gray focus:border-red rounded-full border-[#38bcf9] px-4 py-2 text-sm text-red-700 focus:outline-none"
