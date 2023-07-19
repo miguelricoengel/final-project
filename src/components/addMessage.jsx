@@ -39,7 +39,7 @@ function AddMessage() {
     <div className="">
       <h3 className="mb-1 block">Want to add a new message?</h3><br/>
 
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="space-y-4 md:w-1/2 lg:w-2/3 xl:w-1/2 mx-auto">
         <textarea
           type="text"
           name="text"

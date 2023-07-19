@@ -66,7 +66,8 @@ function AddMessage() {
             Choose File
           </button>
         </div>
-        <div className="mt-5">
+        <br></br>
+        <div >
         <button
           type="submit"
           className="bg-gray focus:border-blue rounded-full border-[#38bcf9] px-4 py-2 text-sm text-blue-700 focus:outline-none"
