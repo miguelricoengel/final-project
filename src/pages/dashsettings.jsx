@@ -6,6 +6,7 @@ import Buble from "../components/Buble";
 function DashSettings() {
 
   const API_URL = '/backend';
+  const storedToken = localStorage.getItem("authToken");
 
   const navigate = useNavigate();
   const { dashId } = useParams();
@@ -57,6 +58,23 @@ function DashSettings() {
         navigate(`/${dashId}`);
       });
   };
+
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+
+    axios
+      .delete(`${API_URL}/api/dashboard/${dashId}/delete`, {
+        headers: { Authorization: `Bearer ${storedToken}` },
+      })
+      .then(() => {
+        navigate("/home");
+      })
+      .catch((error) => {
+        console.log(`Error: ${error.message}`);
+      });
+  };
+
   return (
     <div>
       <h2 className="text-lg font-bold mb-4">Dash Settings</h2>
@@ -111,11 +129,23 @@ function DashSettings() {
         <button type="submit" className="bg-gray focus:border-blue rounded-full border-[#38bcf9] px-4 py-2 text-sm text-blue-700 focus:outline-none"
         >Save</button>
       </form>
+
       <div className="fixed bottom-10 right-10">
         <Link to={`/${dashId}`}>
           <Buble text="back" size="small" />
         </Link>
       </div>
+
+      <form onSubmit={handleDelete} className="mt-2 mb-8">
+        <div>
+          <button
+            type="submit"
+            className="bg-gray focus:border-red rounded-full border-[#38bcf9] px-4 py-2 text-sm text-red-700 focus:outline-none"
+          >
+            Delete
+          </button>
+        </div>
+      </form>
     </div>
   );
 }
