@@ -18,11 +18,9 @@ function formatCreatedAt(post) {
     date: date.toLocaleString("en-US", options),
     userName: post.author.userName,
   };
-} 
+}
 
 function All({ dashboard }) {
-  // The dashboard object contains all the data received from the parent component
-
   return (
     <div className="ml-40 flex-row items-center justify-center max-w-md xl:ml-100">
       <h2 className="text-lg text-blue-500">All Posts</h2>
@@ -31,7 +29,7 @@ function All({ dashboard }) {
         ? dashboard.posts
             .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
             .map((post) => {
-              const authorInfo = formatCreatedAt(post);
+              const { date, userName } = formatCreatedAt(post);
               return (
                 <div key={post._id}>
                   <div className="scrollbar-track-blue-300 scrollbar-thumb-blue-500 w-full overflow-y-scroll p-5">
@@ -40,8 +38,8 @@ function All({ dashboard }) {
                       {post.format === "Quote" && <Messages {...post.idContent} />}
                       {post.format === "Image" && <Pics {...post.idContent} />}
                       <div>
-                        <h3 className="text-gray-300">{authorInfo.date}</h3>
-                        <h3>{authorInfo.userName}</h3>
+                        <h3 className="text-gray-300">{date}</h3>
+                        <h3>{userName}</h3> {/* Mostramos el userName del autor aquí */}
                       </div>
                     </div>
                   </div>
@@ -51,11 +49,10 @@ function All({ dashboard }) {
         : null}
     </div>
   );
-} // Remove the extra closing curly brace here
+}
 
 All.propTypes = {
   dashboard: PropTypes.shape({
-    // Specify the correct shape of the 'dashboard' prop
     posts: PropTypes.array.isRequired,
   }).isRequired,
 };
