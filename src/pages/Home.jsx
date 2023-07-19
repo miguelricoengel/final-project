@@ -41,7 +41,7 @@ function Home() {
   }
 
   return (
-    <div id="flex mt-50 " className="fixed top-0 left-0 right-0 bottom-0 overflow-y-scroll">>
+    <div id="flex mt-50 " className="fixed top-0 left-0 right-0 bottom-0 overflow-y-scroll">
       <h2 className="ml-3 pl-3 flex items-start text-xl">Home</h2>
       <h2 className="m-3 flex items-start p-3">
         {" "}
