@@ -1,11 +1,11 @@
-function Pics(image) {
-
+function Pics( image ) {
   return (
-    <div className="scrollbar-track-blue-300 scrollbar-thumb-blue-500 w-full overflow-y-scroll p-5 ">
-      <div className="rounded-lg border-4 border-blue-200 p-3 ">
-      <img src={image.path} alt="Pics"/>
+    <div className="flex items-center justify-center p-5">
+      <div className="max-w-md xl:ml-100  ">
+        <div className="rounded-lg border-4 border-blue-200 p-3 w-96">
+          <img src={image.path} alt="Pics" className="w-full" />
+        </div>
       </div>
-  
     </div>
   );
 }
