@@ -5,7 +5,7 @@ import Buble from "../components/Buble";
 import { useNavigate } from "react-router-dom";
 
 function ProfileSettings(image) {
-  const { user } = useContext(AuthContext);
+  const { user, logOutUser } = useContext(AuthContext);
   const [userName, setUserName] = useState(`${user.userName}`);
   const [profileImage, setProfileImage] = useState("");
   const [imageSrc, setImageSrc] = useState(image);
@@ -54,6 +54,22 @@ function ProfileSettings(image) {
         console.log(`Error: ${error.message}`);
       });
   };
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+
+    axios
+    .delete(`${API_URL}/api/profile`, {
+      headers: {Authorization: `Bearer ${storedToken}`},
+    })
+    .then(() => {
+      logOutUser();
+      navigate("/");
+    })
+    .catch((error) => {
+      console.log(`Error: ${error.message}`);
+    });
+};
   return (
     <div>
       <h2 className="text-lg font-bold mb-4">Profile Settings</h2>
@@ -111,7 +127,7 @@ function ProfileSettings(image) {
             type="password"
             className="w-full rounded-full border bg-[#38bcf9] bg-opacity-25 p-2 text-sm outline-none transition duration-150 ease-in-out"
             id="password"
-            placeholder="******"
+            placeholder="**"
             readOnly
           />
         </div>
@@ -138,6 +154,16 @@ function ProfileSettings(image) {
             className="bg-gray focus:border-blue rounded-full border-[#38bcf9] px-4 py-2 text-sm text-blue-700 focus:outline-none"
           >
             Update
+          </button>
+        </div>
+      </form>
+      <form onSubmit={handleDelete} className="mt-2 mb-8">
+      <div>
+          <button
+            type="submit"
+            className="bg-gray focus:border-red rounded-full border-[#38bcf9] px-4 py-2 text-sm text-red-700 focus:outline-none"
+          >
+            Delete
           </button>
         </div>
       </form>
