@@ -18,7 +18,7 @@ function formatCreatedAt(post) {
     date: date.toLocaleString("en-US", options),
     userName: post.author.userName,
   };
-} 
+} // Add a closing curly brace here
 
 function All({ dashboard }) {
   // The dashboard object contains all the data received from the parent component
