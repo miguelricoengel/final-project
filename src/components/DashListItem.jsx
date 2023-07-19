@@ -11,7 +11,8 @@ function DashListItem({ title, description, _id, image }) {
 
   return (
     <div className="flex w-full overflow-y-scroll scrollbar-track-blue-300 scrollbar-thumb-blue-500">
-      <Link to={`/${_id}`} className="flex w-1/4">
+     <div className="flex w-1/4">
+      <Link to={`/${_id}`} >
         <div>
           {imageSrc ? (
             <img
@@ -29,6 +30,7 @@ function DashListItem({ title, description, _id, image }) {
           )}
         </div>
       </Link>
+      </div>
       <div className="flex w-3/4 border-b pb-2 m-1">
         <div className="mb-2">
           <h3 className="mb-1 text-sky-600 text-left"> {title}</h3>
