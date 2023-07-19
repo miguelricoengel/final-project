@@ -1,7 +1,7 @@
 // import { useState } from "react";
 import PropTypes from "prop-types";
 
-function Buble({ text, size }) {
+function Buble({ text, size, customClassName }) {
   // const [isDragging, setIsDragging] = useState(false);
   // const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
   // const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -38,7 +38,7 @@ function Buble({ text, size }) {
       case "large":
         return "w-96 h-96 background";
         case "xl":
-        return "w-max h-max background";
+        return "w-96 h-96 background";
       default:
         return "";
     }
@@ -60,22 +60,15 @@ function Buble({ text, size }) {
 
   
   return (
-  <div
-    // onMouseDown={handleMouseDown}
-    // onMouseMove={handleMouseMove}
-    // onMouseUp={handleMouseUp}
-    className={`draggable-div ball2 flex select-none items-center justify-center transition-shadow duration-300 hover:drop-shadow-lg  hover:cursor-pointer ${getSizeClassName()}`}
-    // style={{
-    //   transform: `translate(${position.x}px, ${position.y}px)`,
-    //   animation: isDragging ? "none" : "float 4.5s ease-in-out infinite",
-    // }}
-  >
+  <div>
+   <div className={`draggable-div ball2 flex select-none items-center justify-center transition-shadow duration-300 hover:drop-shadow-lg hover:cursor-pointer ${getSizeClassName()} ${customClassName}`}>
       <div className="absolute inset-0 z-10 flex items-center justify-center">
         {text}
       </div>
       <div className="relative z-0 h-full w-full">
         {["xs", "small", "medium", "large", "xl"].includes(size) && background()}
       </div>
+    </div>
     </div>
   );
 }

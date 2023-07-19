@@ -103,7 +103,7 @@ function Dash() {
         {renderContent()}
       </div>
 
-      <div className="fixed bottom-0 right-0">
+      <div className="fixed bottom-10 right-10">
         <Link to={`/${dashId}/settings`}>
           <Buble text="settings" size="small" />
         </Link>

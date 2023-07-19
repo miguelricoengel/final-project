@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import Buble from "../components/Buble";
 
 function DashSettings() {
 
@@ -110,6 +111,11 @@ function DashSettings() {
         <button type="submit" className="bg-gray focus:border-blue rounded-full border-[#38bcf9] px-4 py-2 text-sm text-blue-700 focus:outline-none"
         >Save</button>
       </form>
+      <div className="fixed bottom-10 right-10">
+        <Link to={`/${dashId}`}>
+          <Buble text="back" size="small" />
+        </Link>
+      </div>
     </div>
   );
 }

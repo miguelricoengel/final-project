@@ -39,12 +39,17 @@ function Navbar(image) {
     };
   }, []);
 
+
+  const handleLinkClick = () => {
+    setNavbarUserOpen(false); // Close the navbar when a link is clicked
+  };
+
   return (
     <>
-      <nav className=" z-10 border-gray-200 bg-white dark:bg-transparent ">
+      <nav className=" z-10 border-gray-200 bg-transparent ">
         <div className="mx-auto flex max-w-screen-xl flex-wrap items-center justify-between p-4">
           <a className="flex items-center ">
-            <span className="self-center whitespace-nowrap text-2xl font-semibold dark:text-white"></span>
+            <span className="self-center whitespace-nowrap text-2xl font-semibold text-white"></span>
           </a>
           <div className="flex items-centershadow-md ">
             <button
@@ -85,18 +90,20 @@ function Navbar(image) {
               </div>
               <li className="w-full">
                 <Link
-                  to="/Home"
+                  to="/home"
                   className="block w-full rounded-lg py-2 pl-3 pr-4 text-blue-500 hover:bg-blue-400/25"
                   aria-current="page"
+                  onClick={handleLinkClick}
                 >
                   Home
                 </Link>
               </li>
               <li className="w-full">
                 <Link
-                  to="/Profile"
+                  to="/profile"
                   className="bg-white-400/25 block w-full rounded-lg py-2 pl-3 pr-4 text-blue-500 hover:bg-blue-400/25 "
                   aria-current="page"
+                  onClick={handleLinkClick}
                 >
                   Profile
                 </Link>
@@ -106,6 +113,7 @@ function Navbar(image) {
                   to="/profile/settings"
                   className="bg-white-400/25 block rounded-lg py-2 pl-3 pr-4 text-blue-500 hover:bg-blue-400/25 "
                   aria-current="page"
+                  onClick={handleLinkClick}
                 >
                   Settings
                 </Link>
