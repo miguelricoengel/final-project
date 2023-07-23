@@ -127,7 +127,7 @@ function ProfileSettings(image) {
             type="password"
             className="w-full rounded-full border bg-[#38bcf9] bg-opacity-25 p-2 text-sm outline-none transition duration-150 ease-in-out"
             id="password"
-            placeholder="**"
+            placeholder="**********"
             readOnly
           />
         </div>
