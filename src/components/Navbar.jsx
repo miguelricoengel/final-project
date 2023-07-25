@@ -39,7 +39,6 @@ function Navbar(image) {
     };
   }, []);
 
-
   const handleLinkClick = () => {
     setNavbarUserOpen(false); // Close the navbar when a link is clicked
   };
@@ -51,13 +50,16 @@ function Navbar(image) {
           <a className="flex items-center ">
             <span className="self-center whitespace-nowrap text-2xl font-semibold text-white"></span>
           </a>
-          <div className="flex items-centershadow-md ">
+          <div className="items-centershadow-md flex ">
             <button
               type="button"
               className="mr-2 rounded-full border-blue-200 p-1 text-sm focus:ring-2 focus:ring-gray-300 "
               id="user-menu-button"
               aria-expanded={isNavbarUserOpen}
-              onClick={toggleNavbarUser}
+              onClick={() => {
+                toggleUserDropdown(); 
+                toggleNavbarUser();
+              }}
             >
               <span className="sr-only">Open main menu</span>
               <div>
