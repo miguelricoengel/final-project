@@ -2,18 +2,18 @@ import { Route, Routes } from "react-router-dom";
 import Profile from "./pages/Profile";
 import Signup from "./pages/signup";
 import Welcome from "./pages/Welcome";
-import Dash from "./pages/dash";
+import Dash from "./pages/Dash";
 import Home from "./pages/Home";
-import Create from "./pages/create";
+import Create from "./pages/Create";
 import Dashsettings from "./pages/Dashsettings";
 import ProfileSettings from "./pages/ProfileSettings";
 import './app.css';
 import './index.css';
-import IsPrivate from "./components/isPrivate"; 
-import IsAnon from "./components/isAnon"; 
+import IsPrivate from "./components/IsPrivate"; 
+import IsAnon from "./components/IsAnon"; 
 import Navbar from "./components/Navbar.jsx"
-import AddMessage from "./components/addMessage";
-import AddImage from "./components/addImage";
+import AddMessage from "./components/AddMessage";
+import AddImage from "./components/AddImage";
 import './normalize.css'
 
 function App() {
@@ -34,32 +34,3 @@ function App() {
 }
 
 export default App;
-
-/* 
-
-Home - lista dashboards (cuadro independiente con croll)
-     - Ajustes Home ¿?
-     - Mi profile link
-     - crear nuevo dash
-     - Ultimos perfiles conectados
-        
-
-- create dashboard: foto, titulo, descrip, connected with
-
-multiform data submit metodo post redirect
-
-
-Back: 
-
-Welcome page - ruta log in (Post)
-Sign up - ruta Sign up (Post)
-Verify - ruta (post)
-
-Profile - ruta user (get & put & delete)
-Home - ruta user & dashes (get) + create (post) + delete (delete posts also)
-**Dash - ruta user (get) dash (get + post + put)
-
- */
-
-//to do 1st: pages & formularios !!!
-
