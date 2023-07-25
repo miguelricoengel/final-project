@@ -1,19 +1,19 @@
 import { Route, Routes } from "react-router-dom";
-import Profile from "./pages/Profile";
-import Signup from "./pages/signup";
-import Welcome from "./pages/Welcome";
-import Dash from "./pages/Dash";
-import Home from "./pages/Home";
-import Create from "./pages/Create";
-import Dashsettings from "./pages/Dashsettings";
-import ProfileSettings from "./pages/ProfileSettings";
+import Profile from "./pages/Profile.jsx";
+import Signup from "./pages/signup.jsx";
+import Welcome from "./pages/Welcome.jsx";
+import Dash from "./pages/Dash.jsx";
+import Home from "./pages/Home.jsx";
+import Create from "./pages/Create.jsx";
+import Dashsettings from "./pages/Dashsettings.jsx";
+import ProfileSettings from "./pages/ProfileSettings.jsx";
 import './app.css';
 import './index.css';
-import IsPrivate from "./components/IsPrivate"; 
-import IsAnon from "./components/IsAnon"; 
+import IsPrivate from "./components/IsPrivate.jsx"; 
+import IsAnon from "./components/IsAnon.jsx"; 
 import Navbar from "./components/Navbar.jsx"
-import AddMessage from "./components/AddMessage";
-import AddImage from "./components/AddImage";
+import AddMessage from "./components/AddMessage.jsx";
+import AddImage from "./components/AddImage.jsx";
 import './normalize.css'
 
 function App() {
@@ -27,8 +27,8 @@ function App() {
         <Route path="/create" element={<IsPrivate> <Navbar /> <Create /> </IsPrivate> } />
         <Route path="/:dashId" element={ <IsPrivate> <Navbar /> <Dash /> </IsPrivate>} />
         <Route path="/:dashId/settings/" element={<IsPrivate> <Navbar /> <Dashsettings /> </IsPrivate>} />
-        <Route path="/:dashId/Post-message/" element={<IsPrivate> <Navbar /> <AddMessage /> </IsPrivate>} />
-        <Route path="/:dashId/Post-image/" element={<IsPrivate> <Navbar /> <AddImage /> </IsPrivate>} />
+        <Route path="/:dashId/post-message/" element={<IsPrivate> <Navbar /> <AddMessage /> </IsPrivate>} />
+        <Route path="/:dashId/post-image/" element={<IsPrivate> <Navbar /> <AddImage /> </IsPrivate>} />
       </Routes>
   );
 }
