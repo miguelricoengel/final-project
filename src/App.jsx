@@ -1,13 +1,13 @@
 import { Route, Routes } from "react-router-dom";
 import Profile from "./pages/Profile.jsx";
-import Signup from "./pages/signup.jsx";
+import Signup from "./pages/Signup.jsx";
 import Welcome from "./pages/Welcome.jsx";
 import Dash from "./pages/Dash.jsx";
 import Home from "./pages/Home.jsx";
 import Create from "./pages/Create.jsx";
 import Dashsettings from "./pages/Dashsettings.jsx";
 import ProfileSettings from "./pages/ProfileSettings.jsx";
-import './app.css';
+import './App.css';
 import './index.css';
 import IsPrivate from "./components/IsPrivate.jsx"; 
 import IsAnon from "./components/IsAnon.jsx"; 
