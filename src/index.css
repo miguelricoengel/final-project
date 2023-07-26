@@ -10,9 +10,23 @@
     url("/fonts/Quicksand-SemiBold.ttf") format("truetype");
 }
 
-html {
+html,
+body {
+  margin: 0;
+  padding: 0;
   height: 100%;
 }
+
+#root {
+  min-height: 100%;
+}
+
+#flex {
+  min-height: 100%;
+  box-sizing: border-box;
+  padding-bottom: 1rem;
+}
+
 
 .fixed-container {
   position: fixed;
