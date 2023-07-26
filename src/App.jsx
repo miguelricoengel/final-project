@@ -1,19 +1,19 @@
 import { Route, Routes } from "react-router-dom";
-import Profile from "./pages/Profile";
-import Signup from "./pages/signup";
-import Welcome from "./pages/Welcome";
-import Dash from "./pages/dash";
-import Home from "./pages/Home";
-import Create from "./pages/create";
-import Dashsettings from "./pages/Dashsettings";
-import ProfileSettings from "./pages/ProfileSettings";
-import './app.css';
+import Profile from "./pages/Profile.jsx";
+import Signup from "./pages/Signup.jsx";
+import Welcome from "./pages/Welcome.jsx";
+import Dash from "./pages/Dash.jsx";
+import Home from "./pages/Home.jsx";
+import Create from "./pages/Create.jsx";
+import Dashsettings from "./pages/Dashsettings.jsx";
+import ProfileSettings from "./pages/ProfileSettings.jsx";
+import './App.css';
 import './index.css';
-import IsPrivate from "./components/isPrivate"; 
-import IsAnon from "./components/isAnon"; 
+import IsPrivate from "./components/IsPrivate.jsx"; 
+import IsAnon from "./components/IsAnon.jsx"; 
 import Navbar from "./components/Navbar.jsx"
-import AddMessage from "./components/addMessage";
-import AddImage from "./components/addImage";
+import AddMessage from "./components/AddMessage.jsx";
+import AddImage from "./components/AddImage.jsx";
 import './normalize.css'
 
 function App() {
@@ -27,39 +27,10 @@ function App() {
         <Route path="/create" element={<IsPrivate> <Navbar /> <Create /> </IsPrivate> } />
         <Route path="/:dashId" element={ <IsPrivate> <Navbar /> <Dash /> </IsPrivate>} />
         <Route path="/:dashId/settings/" element={<IsPrivate> <Navbar /> <Dashsettings /> </IsPrivate>} />
-        <Route path="/:dashId/Post-message/" element={<IsPrivate> <Navbar /> <AddMessage /> </IsPrivate>} />
-        <Route path="/:dashId/Post-image/" element={<IsPrivate> <Navbar /> <AddImage /> </IsPrivate>} />
+        <Route path="/:dashId/post-message/" element={<IsPrivate> <Navbar /> <AddMessage /> </IsPrivate>} />
+        <Route path="/:dashId/post-image/" element={<IsPrivate> <Navbar /> <AddImage /> </IsPrivate>} />
       </Routes>
   );
 }
 
 export default App;
-
-/* 
-
-Home - lista dashboards (cuadro independiente con croll)
-     - Ajustes Home ¿?
-     - Mi profile link
-     - crear nuevo dash
-     - Ultimos perfiles conectados
-        
-
-- create dashboard: foto, titulo, descrip, connected with
-
-multiform data submit metodo post redirect
-
-
-Back: 
-
-Welcome page - ruta log in (Post)
-Sign up - ruta Sign up (Post)
-Verify - ruta (post)
-
-Profile - ruta user (get & put & delete)
-Home - ruta user & dashes (get) + create (post) + delete (delete posts also)
-**Dash - ruta user (get) dash (get + post + put)
-
- */
-
-//to do 1st: pages & formularios !!!
-

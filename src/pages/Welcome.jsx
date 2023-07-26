@@ -6,14 +6,11 @@ import Buble from "../components/Buble";
 function Welcome() {
   return (
     
-    <div className="h-screen z-1 front" id="background-wrap">
-    
-    <Buble text={<h1 className="text-white z-1">buble</h1>} size="large" /> <br/><br/>
+    <div className="h-screen z-1 front " id="background-wrap">
+    <div className="flex items-center justify-center pt-24">
+    <Buble text={<h1 className="text-white z-1">buble</h1>} size="large" /> <br/><br/></div><br/>
       <p className="read-the-docs">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat.
+ My buble, Our buble <br/>Enter and start sharing ur memories w your loved ones!
       </p>
 
       <div className="flex justify-center p-7">

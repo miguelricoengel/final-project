@@ -74,6 +74,7 @@ function Buble({ text, size, customClassName }) {
 }
 
 Buble.propTypes = {
+  customClassName: PropTypes.string,
   text: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
   size: PropTypes.oneOf(["xs", "small", "medium", "large", "xl"]).isRequired,
   onClick: PropTypes.func,

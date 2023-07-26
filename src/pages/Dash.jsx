@@ -19,7 +19,7 @@ function Dash() {
     setSelectedItem(item);  
   };
 
-  const getDashboard = () => {
+  const getDashboard = (dashId, storedToken, setDashboard) => {
     axios
       .get(`${API_URL}/api/dashboard/${dashId}`, {
         headers: { Authorization: `Bearer ${storedToken}` },
@@ -75,8 +75,8 @@ function Dash() {
   };
 
   useEffect(() => {
-    getDashboard();
-  }, []);
+    getDashboard(dashId, storedToken, setDashboard);
+  }, [dashId, storedToken]);
 
   return (
     <div className="m-4 mb-4 h-screen">
