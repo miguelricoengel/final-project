@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/backend': { 
-        target: 'https://apibuble.fly.dev',
+        target: 'apibuble.fly.dev',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/backend/, ''),
       },
