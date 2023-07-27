@@ -1,12 +1,12 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 export default defineConfig({
-  base: 'https://yourbuble.netlify.app//',
+  base: 'https://yourbuble.netlify.app/',
   plugins: [react()],
   server: {
     proxy: {
-      '/backend': { 
+      '/backend': {
         target: 'https://apibuble.fly.dev',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/backend/, ''),
@@ -16,4 +16,4 @@ export default defineConfig({
   build: {
     outDir: 'dist',
   },
-})
+});
